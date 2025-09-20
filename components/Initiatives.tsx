@@ -1,18 +1,128 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import NEO from "../public/assets/NEO.png";
-import CS from "../public/assets/CS.png";
 import Link from "next/link";
+import { StaticImageData } from "next/image";
+import { Rocket } from "lucide-react";
+
+interface Initiative {
+  id: string;
+  title: string;
+  description: string;
+  image: StaticImageData | string;
+  link: string;
+  imageAlt: string;
+}
+
+const initiativesData: Initiative[] = [
+  {
+    id: "launchpad",
+    title: "Launchpad",
+    description:
+      "Got an idea that can change the game?  Launchpad is your chance to pitch, build, and shine! Join E-Cell's ultimate idea-stage startup competition, get mentored by industry pros, and take your first step toward becoming a founder. Registrations are now open - let's launch your dream!.",
+    image: "/assets/LP.png",
+    link: "https://launchpad.ecellvnit.org/",
+    imageAlt: "Launchpad Initiative",
+  },
+  {
+    id: "neo",
+    title: "Neo",
+    description:
+      "National Entrepreneurship Olympiad is a PAN - India examination and a skill enhancement program for the students of class 6th to 12th grade to nurture and test their entrepreneurial skills. This Olympiad includes sections like Basic Entrepreneurial Concepts, Value Proposition, Finances...",
+    image: "/assets/NEO.png",
+    link: "https://neo.ecellvnit.org/",
+    imageAlt: "NEO Initiative",
+  },
+  {
+    id: "csuites",
+    title: "C-suites",
+    description:
+      "C-Suites is a community of like-minded people within VNIT Nagpur where we grow ourselves individually along with people around us. The mission seeks to create a self-sustained ecosystem, where peers discuss and learn from each other through regular group interactions.",
+    image: "/assets/CS.png",
+    link: "https://csuites.ecellvnit.org/",
+    imageAlt: "C-Suites Initiative",
+  },
+];
+
+const GradientLine = ({ className = "" }: { className?: string }) => (
+  <svg
+    className={`w-full max-w-md ${className}`}
+    height="1"
+    viewBox="0 0 400 1"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <line y1="0.5" x2="400" y2="0.5" stroke="url(#paint0_linear)" />
+    <defs>
+      <linearGradient
+        id="paint0_linear"
+        x1="0"
+        y1="1"
+        x2="400"
+        y2="1"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="white" stopOpacity="0" />
+        <stop offset="0.5" stopColor="white" />
+        <stop offset="1" stopColor="white" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+const InitiativeCard = ({
+  initiative,
+  index,
+}: {
+  initiative: Initiative;
+  index: number;
+}) => (
+  <div className="flex flex-col items-center justify-start group h-full">
+    {/* Logo area with fixed height */}
+    <div className="flex flex-col items-center mb-8">
+      <div className="relative h-24 w-48 flex items-center justify-center">
+        <Image
+          src={initiative.image}
+          alt={initiative.imageAlt}
+          fill
+          className="object-contain transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+      <GradientLine className="mt-4" />
+    </div>
+
+    {/* Content Card */}
+    <div className="w-full max-w-sm bg-[#161616] p-8 flex flex-col justify-between h-full min-h-[380px] transition-all duration-300 group-hover:bg-[#1a1a1a] rounded-lg">
+      <div className="flex-1">
+        <h3 className="uppercase font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] mb-4">
+          {initiative.title}
+        </h3>
+        <p className="text-sm xl:text-base text-white leading-relaxed">
+          {initiative.description}
+        </p>
+      </div>
+
+      <Link
+        href={initiative.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center text-lg py-4 mt-8 text-white font-semibold transition-all duration-300 hover:from-[#0287E0] hover:to-[#075ADB] hover:shadow-lg hover:shadow-blue-500/25 rounded-md"
+      >
+        Know More
+      </Link>
+    </div>
+  </div>
+);
 
 const Initiatives = () => {
   return (
     <div
       id="initiatives"
-      className="max-h-full mt-20 bg-black bg-[url('/assets/back.png')] bg-no-repeat bg-center bg-cover bg-blend-luminosity"
+      className="min-h-screen mt-20 bg-black bg-[url('/assets/back.png')] bg-no-repeat bg-center bg-cover bg-blend-luminosity"
     >
       <div className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.2)]">
-        <div className="flex flex-col gap-3 items-center justify-center text-5xl lg:text-7xl xl:text-[80px] font-bold">
+        {/* Header */}
+        <div className="flex flex-col gap-6 items-center justify-center text-5xl lg:text-7xl xl:text-[80px] font-bold mb-20">
           <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
             Initiatives
           </span>
@@ -22,16 +132,12 @@ const Initiatives = () => {
             viewBox="0 0 580 1"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="max-w-full"
           >
-            <line
-              y1="0.5"
-              x2="580"
-              y2="0.5"
-              stroke="url(#paint0_linear_11_3)"
-            />
+            <line y1="0.5" x2="580" y2="0.5" stroke="url(#paint0_linear_header)" />
             <defs>
               <linearGradient
-                id="paint0_linear_11_3"
+                id="paint0_linear_header"
                 x1="622.006"
                 y1="1"
                 x2="-40.7939"
@@ -45,130 +151,28 @@ const Initiatives = () => {
             </defs>
           </svg>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 justify-center lg:justify-evenly pt-20 gap-20 space-x-5">
-          <div className="flex flex-col items-center lg:items-end">
-            <div className="">
-              <Image
-                src={CS}
-                alt="My Image"
-                width={200}
-                height={77}
-                className="ml-28"
+
+        {/* Dynamic Grid */}
+        <div className="container mx-auto px-6">
+          <div
+            className={`grid gap-16 justify-center items-stretch ${
+              initiativesData.length === 1
+                ? "grid-cols-1 max-w-lg mx-auto"
+                : initiativesData.length === 2
+                ? "grid-cols-1 lg:grid-cols-2 max-w-4xl mx-auto"
+                : initiativesData.length === 3
+                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+                : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto"
+            }`}
+          >
+            {initiativesData.map((initiative, index) => (
+              <InitiativeCard
+                key={initiative.id}
+                initiative={initiative}
+                index={index}
               />
-              <svg
-                className="mr-12"
-                width="400"
-                height="1"
-                viewBox="0 0 500 1"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  y1="0.5"
-                  x2="604"
-                  y2="0.5"
-                  stroke="url(#paint0_linear_28_8)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_28_8"
-                    x1="500.362"
-                    y1="1"
-                    x2="50.6017"
-                    y2="1"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="white" stopOpacity="0" />
-                    <stop offset="0.501042" stopColor="white" />
-                    <stop offset="1" stopColor="white" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div className="h-full lg:h-fit w-3/4 xl:w-1/2 bg-[#161616] ml-6 lg:ml-0 mt-8 p-8 flex flex-col xl:justify-end">
-              <div>
-                <div className="uppercase font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
-                  C-suites
-                </div>
-                <p className="text-sm xl:text-base mt-2 text-white">
-                  C-Suites is a community of like-minded people within VNIT
-                  Nagpur where we grow ourselves individually along with people
-                  around us. The mission seeks to create a self-sustained
-                  ecosystem, where peers discuss and learn from each other
-                  through regular group interactions.
-                </p>
-              </div>
-              <Link
-                href="https://csuites.ecellvnit.org/"
-                target="_blank"
-                className="w-full bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center text-lg sm:w-1/2 self-center py-4 mt-10 scale-75 text-white"
-              >
-                Know More
-              </Link>
-            </div>
+            ))}
           </div>
-          <div className="flex flex-col items-center lg:items-start">
-            <div className="mt-2">
-              <Image
-                src={NEO}
-                alt="My Image"
-                width={200}
-                height={77}
-                className="ml-24 lg:ml-20"
-              />
-              <svg
-                className="mr-12"
-                width="380"
-                height="1"
-                viewBox="0 0 500 1"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  y1="0.5"
-                  x2="454"
-                  y2="0.5"
-                  stroke="url(#paint0_linear_28_8)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_28_8"
-                    x1="330.362"
-                    y1="1"
-                    x2="-100.6017"
-                    y2="1"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="white" stopOpacity="0" />
-                    <stop offset="0.501042" stopColor="white" />
-                    <stop offset="1" stopColor="white" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div className="h-full lg:h-fit w-3/4 xl:w-1/2 bg-[#161616] mt-8 p-8 flex flex-col justify-center">
-              <div>
-                <h1 className="font-bold text-3xl uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
-                  Neo
-                </h1>
-                <p className="text-sm xl:text-base mt-2 text-white">
-                  National Entrepreneurship Olympiad is a PAN - India
-                  examination and a skill enhancement program for the students
-                  of class 6th to 12th grade to nurture and test their
-                  entrepreneurial skills. This Olympiad includes sections like
-                  Basic Entrepreneurial Concepts, Value Proposition, Finances...
-                </p>
-              </div>
-              <Link
-                href="https://neo.ecellvnit.org/"
-                target="_blank"
-                className="w-full bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center text-lg sm:w-1/2 self-center py-4 mt-10 scale-75 text-white"
-              >
-                Know More
-              </Link>
-            </div>
-          </div>
-          <div></div>
         </div>
       </div>
     </div>

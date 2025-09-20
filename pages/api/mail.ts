@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import dotenv from "dotenv";
 import { createTransport } from 'nodemailer';
+dotenv.config();
+
 
 type Data = {
   code: number,

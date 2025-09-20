@@ -1240,9 +1240,9 @@ const Team = () => {
           </div>
         </div>
         <div className="pt-10 bg-black">
-          <Footer />
+          <Footer /></div>
         </div>
-      </div>
+      
     </div>
   );
 };
