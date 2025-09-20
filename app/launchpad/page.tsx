@@ -132,12 +132,12 @@ const handleSubmit = async (e: React.FormEvent) => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="idNo" className="text-white">
-                    ID Number
+                    College Name
                   </Label>
                   <Input
                     id="idNo"
                     type="text"
-                    placeholder="Enter your ID number"
+                    placeholder="Enter your full college name"
                     value={formData.idNo}
                     onChange={(e) => handleInputChange('idNo', e.target.value)}
                     required
