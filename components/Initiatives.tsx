@@ -21,7 +21,7 @@ const initiativesData: Initiative[] = [
     description:
       "Got an idea that can change the game?  Launchpad is your chance to pitch, build, and shine! Join E-Cell's ultimate idea-stage startup competition, get mentored by industry pros, and take your first step toward becoming a founder. Registrations are now open - let's launch your dream!.",
     image: "/assets/LP.png",
-    link: "https://launchpad.ecellvnit.org/",
+    link: "/launchpad",
     imageAlt: "Launchpad Initiative",
   },
   {
