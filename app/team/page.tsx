@@ -460,7 +460,7 @@ const Team = () => {
                             />
                           </svg>
                         </Link>
-                        <Link href="tel:9130692448">
+                        <Link href="tel:8247080606">
                           <svg
                             className="w-6 h-6"
                             viewBox="0 0 18 18"
