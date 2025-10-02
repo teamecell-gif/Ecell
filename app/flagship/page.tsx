@@ -1,10 +1,15 @@
 'use client'
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Flagship = () => {
+  useEffect(() => {
+    // Redirect to the external URL
+    window.location.href = "https://flagship.ecellvnit.org";
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -30,4 +35,5 @@ const Flagship = () => {
     </div>
   );
 };
+
 export default Flagship;
