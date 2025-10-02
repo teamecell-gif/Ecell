@@ -12,7 +12,7 @@ const Flagship = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar />
       <div className="bg-[#0C0C0C] pt-10 pb-36">
         <div className="flex flex-col gap-3 items-center justify-center text-5xl xl:text-6xl font-semibold">
           <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">Flagship</span>
@@ -31,8 +31,9 @@ const Flagship = () => {
       </div>
       <div className="pt-10 bg-black">
         <Footer />
-      </div>
+      </div> */}
     </div>
+    
   );
 };
 
