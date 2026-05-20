@@ -11,7 +11,7 @@ export default function Head() {
         property="og:description"
         content="Join E-Cell VNIT's community of entrepreneurs and empower your journey with mentorship, workshops, competitions, and events"
       />
-      <link rel="icon" href="/assets/icon.png" />
+      <link rel="icon" href="/assets/icon.webp" />
     </>
   )
 }

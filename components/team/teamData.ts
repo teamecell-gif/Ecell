@@ -1,28 +1,28 @@
 import type { TeamMember, FacultyMember } from "./types";
 
 // ─── Faculty photos ────────────────────────────────────────────────
-import agasti_sir from "../../public/assets/team/agasti_sir.jpeg";
-import chayan from "../../public/assets/team/py.jpg";
-import khatri from "../../public/assets/team/khatri.jpg";
+import agasti_sir from "../../public/assets/team/agasti_sir.webp";
+import chayan from "../../public/assets/team/py.webp";
+import khatri from "../../public/assets/team/khatri.webp";
 
 // ─── Core Committee photos ─────────────────────────────────────────
-import prashant from "../../public/assets/team/PrashantNew.jpg";
-import anushkaK from "../../public/assets/team/AnushkaK.jpg";
-import deveshMishra from "../../public/assets/team/DeveshMishra.jpeg";
-import gokulTV from "../../public/assets/team/GokulTV.jpg";
-import aryaKhadtar from "../../public/assets/team/AryaKhadtar.jpg";
-import aryanGarg from "../../public/assets/team/AryanGarg.png";
-import pragyaAgarwal from "../../public/assets/team/PragyaAgarwal.jpeg";
-import vidhiRai from "../../public/assets/team/VidhiRai.jpg";
-import ishikaSingh from "../../public/assets/team/IshikaSingh.jpg";
-import junedTamboli from "../../public/assets/team/JunedTamboli.jpeg";
-import jineshSriSabari from "../../public/assets/team/JineshSriSabari.jpg";
-import shaileshTiwari from "../../public/assets/team/ShaileshTiwari.jpg";
-import samithReddy from "../../public/assets/team/SamithReddy.jpeg";
+import prashant from "../../public/assets/team/PrashantNew.webp";
+import anushkaK from "../../public/assets/team/AnushkaK.webp";
+import deveshMishra from "../../public/assets/team/DeveshMishra.webp";
+import gokulTV from "../../public/assets/team/GokulTV.webp";
+import aryaKhadtar from "../../public/assets/team/AryaKhadtar.webp";
+import aryanGarg from "../../public/assets/team/AryanGarg.webp";
+import pragyaAgarwal from "../../public/assets/team/PragyaAgarwal.webp";
+import vidhiRai from "../../public/assets/team/VidhiRai.webp";
+import ishikaSingh from "../../public/assets/team/IshikaSingh.webp";
+import junedTamboli from "../../public/assets/team/JunedTamboli.webp";
+import jineshSriSabari from "../../public/assets/team/JineshSriSabari.webp";
+import shaileshTiwari from "../../public/assets/team/ShaileshTiwari.webp";
+import samithReddy from "../../public/assets/team/SamithReddy.webp";
 import placeholder from "../../public/assets/team/placeholder.svg";
-import sudiksha from "../../public/assets/team/Sudiksha.jpeg";
-import sanket from "../../public/assets/team/Sanket.png";
-import shivansh from "../../public/assets/team/Shivansh.jpeg";
+import sudiksha from "../../public/assets/team/Sudiksha.webp";
+import sanket from "../../public/assets/team/Sanket.webp";
+import shivansh from "../../public/assets/team/Shivansh.webp";
 
 // ─── Faculty Data ──────────────────────────────────────────────────
 export const faculty: FacultyMember[] = [

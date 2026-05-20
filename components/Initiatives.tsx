@@ -17,7 +17,7 @@ const initiativesData: Initiative[] = [
     title: "Launchpad",
     description:
       "Got an idea that can change the game?  Launchpad is your chance to pitch, build, and shine! Join E-Cell's ultimate idea-stage startup competition, get mentored by industry pros, and take your first step toward becoming a founder. Registrations are now open - let's launch your dream!.",
-    image: "/assets/LP.png",
+    image: "/assets/LP.webp",
     link: "/launchpad",
     imageAlt: "Launchpad Initiative",
   },
@@ -26,7 +26,7 @@ const initiativesData: Initiative[] = [
     title: "Neo",
     description:
       "National Entrepreneurship Olympiad is a PAN - India examination and a skill enhancement program for the students of class 6th to 12th grade to nurture and test their entrepreneurial skills. This Olympiad includes sections like Basic Entrepreneurial Concepts, Value Proposition, Finances...",
-    image: "/assets/NEO.png",
+    image: "/assets/NEO.webp",
     link: "https://neo.ecellvnit.org/",
     imageAlt: "NEO Initiative",
   },
@@ -35,7 +35,7 @@ const initiativesData: Initiative[] = [
     title: "C-suites",
     description:
       "C-Suites is a community of like-minded people within VNIT Nagpur where we grow ourselves individually along with people around us. The mission seeks to create a self-sustained ecosystem, where peers discuss and learn from each other through regular group interactions.",
-    image: "/assets/CS.png",
+    image: "/assets/CS.webp",
     link: "https://csuites.ecellvnit.org/",
     imageAlt: "C-Suites Initiative",
   },
