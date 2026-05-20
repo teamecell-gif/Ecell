@@ -19,7 +19,7 @@ const Team = () => {
   return (
     <div>
       <Navbar />
-      <main className="bg-[#0C0C0C] pt-10 pb-36">
+      <main className="bg-[#0C0C0C] pt-32 pb-36">
         <div className="w-full h-full flex justify-center overflow-hidden">
           <div className="w-full max-w-6xl 2xl:max-w-[95%] p-6">
             {/* ── Page Title ── */}
