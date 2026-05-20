@@ -92,6 +92,7 @@ export const coreMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/aryan-garg-a5b193369",
     email: "aryangarg04042006@gmail.com",
     phone: "8502080654",
+    imageClass: "object-top",
   },
   {
     name: "Pragya Agarwal",
