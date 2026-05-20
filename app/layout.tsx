@@ -13,7 +13,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body className={montserrat.className}>
-        <div className="flex flex-col-reverse md:flex-row md:h-screen relative overflow-x-hidden">
+        <div className="flex flex-col-reverse md:flex-row min-h-screen relative overflow-x-hidden">
           <Providers>
             {children}
           </Providers>

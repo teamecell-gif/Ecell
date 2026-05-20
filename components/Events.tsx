@@ -1,6 +1,3 @@
-"use client";
-import React from "react";
-
 import flagship from "../public/assets/flagship.png";
 import suc from "../public/assets/suc.png";
 import jugaad from "../public/assets/jugaad.png";
@@ -17,7 +14,7 @@ const Events = () => {
   return (
     <div
       id="events"
-      className="min-h-screen mt-20 bg-[url('/assets/back3.png')] bg-no-repeat bg-bottom bg-cover bg-blend-luminosity"
+      className="min-h-screen mt-20 bg-black"
     >
       <div className="bg-gradient-to-b from-[rgba(0,0,0,0.14)] to-[rgba(0,0,0.4,1)]">
         <div className="flex flex-col gap-3 items-center justify-center text-5xl lg:text-7xl xl:text-[80px] font-bold">
@@ -70,7 +67,7 @@ const Events = () => {
                 <Link
                   href="https://flagship.ecellvnit.org/"
                   target="_blank"
-                  className="text-center bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="text-center bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -91,7 +88,7 @@ const Events = () => {
                 <Link
                   href="https://startupconclave.ecellvnit.org/"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -112,7 +109,7 @@ const Events = () => {
                 <Link
                   href="https://jugaad.ecellvnit.org/"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -133,7 +130,7 @@ const Events = () => {
                 <Link
                   href="https://adventure.ecellvnit.org"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -154,7 +151,7 @@ const Events = () => {
                 <Link
                   href="https://wallstreet.ecellvnit.org"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -175,7 +172,7 @@ const Events = () => {
                 <Link
                   href="https://ceo.ecellvnit.org"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -196,7 +193,7 @@ const Events = () => {
                 <Link
                   href="/render"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -216,7 +213,7 @@ const Events = () => {
                 <Link
                   href="https://ipl.ecellvnit.org"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>
@@ -237,7 +234,7 @@ const Events = () => {
                 <Link
                   href="https://swades.ecellvnit.org/"
                   target="_blank"
-                  className="bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center w-1/2 self-center py-4 text-white text-lg scale-75"
+                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
                 >
                   Know More
                 </Link>

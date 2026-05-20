@@ -1,9 +1,6 @@
-"use client";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { StaticImageData } from "next/image";
-import { Rocket } from "lucide-react";
+import type { StaticImageData } from "next/image";
 
 interface Initiative {
   id: string;
@@ -72,10 +69,8 @@ const GradientLine = ({ className = "" }: { className?: string }) => (
 
 const InitiativeCard = ({
   initiative,
-  index,
 }: {
   initiative: Initiative;
-  index: number;
 }) => (
   <div className="flex flex-col items-center justify-start group h-full">
     {/* Logo area with fixed height */}
@@ -92,7 +87,7 @@ const InitiativeCard = ({
     </div>
 
     {/* Content Card */}
-    <div className="w-full max-w-sm bg-[#161616] p-8 flex flex-col justify-between h-full min-h-[380px] transition-all duration-300 group-hover:bg-[#1a1a1a] rounded-lg">
+    <div className="w-full max-w-sm bg-[#161616] p-8 flex flex-col justify-between h-full min-h-[380px] transition-colors duration-300 group-hover:bg-[#1a1a1a] rounded-lg">
       <div className="flex-1">
         <h3 className="uppercase font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] mb-4">
           {initiative.title}
@@ -106,7 +101,7 @@ const InitiativeCard = ({
         href={initiative.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase text-center text-lg py-4 mt-8 text-white font-semibold transition-all duration-300 hover:from-[#0287E0] hover:to-[#075ADB] hover:shadow-lg hover:shadow-blue-500/25 rounded-md"
+        className="w-full bg-transparent border-2 border-[#0298F9] uppercase text-center text-lg py-4 mt-8 text-[#0298F9] font-semibold transition-colors duration-300 hover:bg-[#0298F9] hover:text-white rounded-md"
       >
         Know More
       </Link>
@@ -118,7 +113,7 @@ const Initiatives = () => {
   return (
     <div
       id="initiatives"
-      className="min-h-screen mt-20 bg-black bg-[url('/assets/back.png')] bg-no-repeat bg-center bg-cover bg-blend-luminosity"
+      className="min-h-screen mt-20 bg-black"
     >
       <div className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.2)]">
         {/* Header */}
@@ -169,7 +164,6 @@ const Initiatives = () => {
               <InitiativeCard
                 key={initiative.id}
                 initiative={initiative}
-                index={index}
               />
             ))}
           </div>

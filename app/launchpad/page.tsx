@@ -405,7 +405,7 @@ const Launchpad = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-[#0298F9] hover:bg-[#0298F9]/80 text-white px-12 py-3 text-lg font-semibold transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-[#0298F9] hover:bg-[#0298F9]/80 text-white px-12 py-3 text-lg font-semibold transition-[background-color,transform] duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">

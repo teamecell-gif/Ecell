@@ -1,8 +1,6 @@
-'use client'
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import React from "react";
+import ecellLogo from "../../public/assets/ecell-logo.png";
 
 import adobe from "../../public/assets/sponsors/adobe.png";
 import air_india from "../../public/assets/sponsors/air_india.png";
@@ -33,113 +31,143 @@ import uber from "../../public/assets/sponsors/uber.png";
 import unacademy from "../../public/assets/sponsors/unacademy.png";
 import zebronics from "../../public/assets/sponsors/zebronics.png";
 
+const sponsorGroups = [
+    {
+        title: "Title Sponsors",
+        sponsors: [
+            { src: zebronics, alt: "Zebronics" },
+            { src: unacademy, alt: "Unacademy" },
+            { src: akudo, alt: "Akudo" },
+        ],
+    },
+    {
+        title: "Gold Sponsors",
+        sponsors: [
+            { src: kawasaki, alt: "Kawasaki" },
+            { src: coco_cola, alt: "Coca Cola" },
+            { src: radisson, alt: "Radisson Blu" },
+        ],
+    },
+    {
+        title: "Silver Sponsors",
+        sponsors: [
+            { src: adobe, alt: "Adobe", width: 120 },
+            { src: air_india, alt: "Air India" },
+            { src: central, alt: "Central" },
+        ],
+    },
+    {
+        title: "Bronze Sponsors",
+        sponsors: [
+            { src: ntpc, alt: "NTPC" },
+            { src: coal_india, alt: "Coal India" },
+            { src: moil, alt: "MOIL" },
+            { src: sidbi, alt: "SIDBI" },
+        ],
+    },
+    {
+        title: "Banking Partners",
+        sponsors: [
+            { src: canara, alt: "Canara Bank", width: 1000 },
+            { src: sbi, alt: "SBI" },
+            { src: bsnl, alt: "BSNL" },
+            { src: insurance, alt: "National Insurance" },
+        ],
+    },
+    {
+        title: "Other Partners",
+        sponsors: [
+            { src: oyo, alt: "OYO" },
+            { src: lenskart, alt: "Lenskart" },
+            { src: itc, alt: "ITC" },
+            { src: ola, alt: "Ola" },
+            { src: hp, alt: "HP", width: 200 },
+            { src: uber, alt: "Uber", width: 350 },
+            { src: iball, alt: "iBall", width: 200 },
+            { src: ccd, alt: "CCD", width: 200 },
+            { src: dhl, alt: "DHL", width: 400 },
+            { src: astrail, alt: "Astrail" },
+            { src: rc, alt: "Radio City" },
+        ],
+    },
+];
+const navigation = [
+    { name: "Home", href: "/#" },
+    { name: "About", href: "/#about" },
+    { name: "Initiatives", href: "/#initiatives" },
+    { name: "Events", href: "/#events" },
+    { name: "Team", href: "/team" },
+    { name: "Sponsors", href: "/sponsors" },
+    { name: "Contact", href: "/#contact" },
+];
+
 const Sponsors = () => {
     return (
-        <div>
-            <Navbar />
-            <div className="p-10">
-                <div className="flex justify-center items-center">
-                    <span className="uppercase text-transparent text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">Our Sponsors</span>
+        <div className="min-h-screen bg-white">
+            {/* Solid black navbar for white page */}
+            <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-20 py-3 lg:py-4 bg-black">
+                <a href="https://www.ecellvnit.org/">
+                    <Image
+                        src={ecellLogo}
+                        alt="E-Cell VNIT Logo"
+                        width={100}
+                        height={100}
+                        priority
+                        className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain"
+                    />
+                </a>
+                <div className="hidden md:flex items-center gap-6 lg:gap-10">
+                    {navigation.map((item) => (
+                        <a
+                            key={item.name}
+                            href={item.href}
+                            className="text-xs lg:text-sm uppercase tracking-widest text-white/80 hover:text-[#0298F9] transition-colors duration-300 font-medium"
+                        >
+                            {item.name}
+                        </a>
+                    ))}
                 </div>
-                <div className="w-full h-full flex justify-center overflow-hidden">
-                    <div className="w-full max-w-8xl 2xl:max-w-[90%]">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 items-center justify-center gap-10">
-                            <div className="flex justify-center items-center">
-                                <Image className="" src={zebronics} alt="zebronics" />
-                            </div>
-                            <div className="flex justify-center items-center ">
-                                <Image className="" src={unacademy} alt="unacademy" />
-                            </div>
-                            <div className="flex justify-center items-center ">
-                                <Image className="" src={akudo} alt="akudo" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <Image className="" src={kawasaki} alt="kawasaki" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <Image className="" src={coco_cola} alt="cocacola" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <Image className="" src={radisson} alt="radisson blu" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <Image className=" max-w-28" src={adobe} alt="adobe" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <Image className="" src={air_india} alt="air india" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <Image className="" src={central} alt="central" />
-                            </div>
-                            <div className="lg:col-span-3 flex flex-col lg:flex-row gap-10 lg:gap-6">
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={ntpc} alt="ntpc" />
-                                </div>
-                                <div className="flex justify-center items-center ">
-                                    <Image className="" src={coal_india} alt="coal india" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={moil} alt="moil" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={sidbi} alt="sidbi" />
-                                </div>
-                            </div>
-                            <div className="lg:col-span-3 flex flex-col lg:flex-row gap-10 lg:gap-6">
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={canara} alt="canara" width={1000} />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={sbi} alt="sbi" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={bsnl} alt="bsnl" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={insurance} alt="national insurance" />
-                                </div>
-                            </div>
-                            <div className="lg:col-span-3 flex flex-col lg:flex-row gap-10 lg:gap-6">
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={oyo} alt="oyo" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={lenskart} alt="lenskart" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={itc} alt="itc" />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={ola} alt="ola" />
-                                </div>
-                            </div>
-                            <div className="lg:col-span-3 flex flex-col lg:flex-row gap-10 lg:gap-6">
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={hp} alt="hp" width={200} />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <Image className="" src={uber} alt="uber" width={350} />
-                                </div>
-                                <div className="flex justify-center items-center ">
-                                    <Image className="" src={iball} alt="iball" width={200} />
-                                </div>
-                                <div className="flex justify-center items-center ">
-                                    <Image className="" src={ccd} alt="ccd" width={200} />
-                                </div>
-                                <div className="flex justify-center items-center scale">
-                                    <Image className="" src={dhl} alt="dhl" width={400} />
-                                </div>
-                            </div>
-                            <div className="flex justify-center items-center scale">
-                                <Image className="" src={astrail} alt="astrail" />
-                            </div>
-                            <div className="flex justify-center items-center scale">
-                                <Image className="" src={rc} alt="radio city" />
+            </nav>
+
+            {/* Top padding for fixed navbar */}
+            <div className="pt-24 md:pt-28 pb-16 px-6 md:px-16 lg:px-24">
+                {/* Page Title */}
+                <div className="flex justify-center items-center mb-16">
+                    <h1 className="uppercase text-transparent text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
+                        Our Sponsors
+                    </h1>
+                </div>
+
+                {/* Sponsor Groups */}
+                <div className="max-w-7xl mx-auto space-y-20">
+                    {sponsorGroups.map((group) => (
+                        <div key={group.title}>
+                            {/* Group Title */}
+                            <h2 className="text-center text-lg md:text-xl uppercase tracking-[0.3em] text-gray-400 font-medium mb-10">
+                                {group.title}
+                            </h2>
+
+                            {/* Sponsor Logos */}
+                            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-16">
+                                {group.sponsors.map((sponsor) => (
+                                    <div
+                                        key={sponsor.alt}
+                                        className="flex justify-center items-center bg-gray-50 rounded-2xl p-6 md:p-8 hover:bg-gray-100 transition-colors duration-300 w-[160px] h-[120px] md:w-[220px] md:h-[140px]"
+                                    >
+                                        <Image
+                                            src={sponsor.src}
+                                            alt={sponsor.alt}
+                                            width={sponsor.width || undefined}
+                                            className="max-h-20 md:max-h-24 w-auto object-contain"
+                                        />
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
+
             <div className="pt-10 bg-black">
                 <Footer />
             </div>

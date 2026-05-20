@@ -1,12 +1,7 @@
 "use client";
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import ecellLogoWhite from "../public/assets/ecell-white-img.png";
-import ecellLogoBlack from "../public/assets/ecell-black-img.png";
+import ecellLogo from "../public/assets/ecell-logo.png";
 
 const navigation = [
   { name: "Home", href: "/#" },
@@ -18,98 +13,94 @@ const navigation = [
   { name: "Contact", href: "/#contact" },
 ];
 
+const NAV_SCROLL_THRESHOLD = 150;
+
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldShowSolidNav = window.scrollY > NAV_SCROLL_THRESHOLD;
+      setScrolled((current) => (
+        current === shouldShowSolidNav ? current : shouldShowSolidNav
+      ));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Popover className="relative w-full bg-black z-50">
-      <div className="px-5 flex items-center justify-between py-2 md:justify-start md:space-x-10">
-        <div className="flex gap-4 justify-start">
-          <a href="https://www.ecellvnit.org/">
-            <span className="sr-only">E-Cell VNIT</span>
-            <Image
-              height={150}
-              width={150}
-              priority
-              src={ecellLogoWhite}
-              alt="E-Cell VNIT"
-            />
-          </a>
-        </div>
-        <div className="-my-2 mr-2 md:hidden">
-          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-            <span className="sr-only">Open menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </Popover.Button>
-        </div>
-        <Popover.Group
-          as="nav"
-          className="w-full hidden space-x-10 md:flex md:justify-end pr-10"
-        >
-          {navigation.map((item, idx) => (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-20 py-4 lg:py-5 transition-[background-color,box-shadow] duration-300 ${
+          scrolled ? "bg-black shadow-lg" : "bg-transparent shadow-none"
+        }`}
+      >
+        {/* Logo */}
+        <a href="https://www.ecellvnit.org/">
+          <Image
+            src={ecellLogo}
+            alt="E-Cell VNIT Logo"
+            width={100}
+            height={100}
+            priority
+            className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain transition-[filter] duration-300 ${
+              scrolled ? "drop-shadow-none" : "drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+            }`}
+          />
+        </a>
+
+        {/* Desktop Nav Links */}
+        <div className="hidden md:flex items-center gap-6 lg:gap-10">
+          {navigation.map((item) => (
             <a
-              key={idx}
-              className="text-xs lg:text-lg uppercase text-white hover:text-gray-300"
+              key={item.name}
               href={item.href}
+              className="text-xs lg:text-sm uppercase tracking-widest text-white/80 hover:text-[#0298F9] transition-colors duration-300 font-medium"
             >
               {item.name}
             </a>
           ))}
-        </Popover.Group>
-      </div>
+        </div>
 
-      <Transition
-        as={Fragment}
-        enter="duration-200 ease-out"
-        enterFrom="opacity-0 scale-95"
-        enterTo="opacity-100 scale-100"
-        leave="duration-100 ease-in"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
-      >
-        <Popover.Panel className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
         >
-          <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-            <div className="px-5 pt-5 pb-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <Image
-                    height={100}
-                    width={100}
-                    priority
-                    src={ecellLogoBlack}
-                    alt="E-Cell VNIT"
-                  />
-                </div>
-                <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                    <span className="sr-only">
-                      Close menu
-                    </span>
-                    <XMarkIcon
-                      className="h-6 w-6"
-                      aria-hidden="true"
-                    />
-                  </Popover.Button>
-                </div>
-              </div>
-              <div className="mt-6">
-                <nav className="grid gap-y-8">
-                  {navigation.map((item, idx) => (
-                    <Popover.Button
-                      as="a"
-                      key={idx}
-                      className="text-md uppercase text-gray-900 hover:text-gray-700"
-                      href={item.href}
-                    >
-                      {item.name}
-                    </Popover.Button>
-                  ))}
-                </nav>
-              </div>
-            </div>
+          {mobileOpen ? (
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </nav>
+
+      {/* Mobile Nav Dropdown */}
+      {mobileOpen && (
+        <div className="fixed top-20 left-0 right-0 z-50 bg-black/95 backdrop-blur-md md:hidden">
+          <div className="flex flex-col items-center gap-5 py-8">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-sm uppercase tracking-widest text-white/80 hover:text-[#0298F9] transition-colors font-medium"
+              >
+                {item.name}
+              </a>
+            ))}
           </div>
-        </Popover.Panel>
-      </Transition>
-    </Popover>
+        </div>
+      )}
+    </>
   );
 };
 
