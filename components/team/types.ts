@@ -8,6 +8,7 @@ export interface TeamMember {
   linkedin: string;
   email: string;
   phone: string;
+  imageClass?: string;
 }
 
 /** Represents a faculty advisor (no social links needed). */

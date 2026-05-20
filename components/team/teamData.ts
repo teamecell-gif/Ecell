@@ -116,6 +116,7 @@ export const coreMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/ishika-singh-73a41330b",
     email: "ishikasingh10323@gmail.com",
     phone: "9780390534",
+    imageClass: "object-bottom",
   },
   {
     name: "Sanket Pujari",
@@ -156,6 +157,7 @@ export const coreMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/shivansh-tiwari-68ab15235",
     email: "shivansht2018@gmail.com",
     phone: "8468968294",
+    imageClass: "object-top",
   },
   {
     name: "Samith Reddy Gurijala",
