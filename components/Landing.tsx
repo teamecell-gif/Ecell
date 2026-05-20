@@ -98,7 +98,7 @@ const Landing = () => {
       id="home"
       className="relative w-full h-screen overflow-hidden"
       style={{
-        backgroundImage: "url('/assets/andywang.jpg')",
+        backgroundImage: "url('/assets/andywang.webp')",
         backgroundAttachment: "fixed",
         backgroundPosition: "center",
         backgroundSize: "cover",
