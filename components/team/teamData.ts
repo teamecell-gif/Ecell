@@ -117,7 +117,7 @@ export const coreMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/ishika-singh-73a41330b",
     email: "ishikasingh10323@gmail.com",
     phone: "9780390534",
-    imageClass: "object-bottom",
+    imageClass: "object-center",
   },
   {
     name: "Sanket Pujari",
