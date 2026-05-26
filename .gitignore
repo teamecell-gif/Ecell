@@ -36,3 +36,9 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# local temp and test files
+localhost_3001-*.html
+localhost_*.html
+read_excel.cjs
+test.js

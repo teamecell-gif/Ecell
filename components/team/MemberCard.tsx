@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import type { TeamMember } from "./types";
 import { cardVariants } from "./animations";
 import { LinkedInIcon, EmailIcon, PhoneIcon } from "./Icons";
@@ -76,6 +76,16 @@ export const MemberCard = ({
   member: TeamMember;
   featured?: boolean;
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px) or (pointer: coarse)");
+    setIsMobile(media.matches);
+    const listener = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
   const { ref, style, handleMouseMove, handleMouseLeave } = useTilt(
     featured ? 6 : 8,
   );
@@ -87,11 +97,11 @@ export const MemberCard = ({
     >
       <motion.div
         ref={ref}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        animate={style}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        style={{ perspective: 800, transformStyle: "preserve-3d" }}
+        onMouseMove={isMobile ? undefined : handleMouseMove}
+        onMouseLeave={isMobile ? undefined : handleMouseLeave}
+        animate={isMobile ? undefined : style}
+        transition={isMobile ? undefined : { type: "spring", stiffness: 300, damping: 20 }}
+        style={isMobile ? undefined : { perspective: 800, transformStyle: "preserve-3d" }}
         className="cursor-pointer"
       >
         {/* Photo container — sits on a raised "layer" via translateZ */}
@@ -102,7 +112,7 @@ export const MemberCard = ({
             motion-safe:transition-shadow motion-safe:duration-300
             hover:shadow-[0_8px_40px_rgba(2,152,249,0.3)]
           `}
-          style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
+          style={isMobile ? undefined : { transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
         >
           <div className="bg-gradient-to-b from-[rgba(2,152,249,0)] to-[rgba(8,107,234,0.5)]">
             <div className={`relative w-full ${featured ? "h-[380px]" : "h-[320px]"}`}>
@@ -126,7 +136,7 @@ export const MemberCard = ({
         {/* Text + socials — sits closer to the surface (lower Z) */}
         <div
           className="flex flex-col justify-center gap-2 mt-4"
-          style={{ transform: "translateZ(10px)" }}
+          style={isMobile ? undefined : { transform: "translateZ(10px)" }}
         >
           <span
             className={`
