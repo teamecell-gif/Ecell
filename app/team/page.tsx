@@ -75,17 +75,11 @@ const Team = () => {
               </motion.div>
 
               {/* Remaining Core Members */}
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 max-w-xs md:max-w-5xl mx-auto mt-16"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 max-w-xs md:max-w-5xl mx-auto mt-16">
                 {coreMembers.map((member) => (
-                  <MemberCard key={member.name} member={member} />
+                  <MemberCard key={member.name} member={member} animateIndependent />
                 ))}
-              </motion.div>
+              </div>
             </section>
           </div>
         </div>

@@ -72,9 +72,11 @@ const useTilt = (intensity = 8) => {
 export const MemberCard = ({
   member,
   featured = false,
+  animateIndependent = false,
 }: {
   member: TeamMember;
   featured?: boolean;
+  animateIndependent?: boolean;
 }) => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -93,6 +95,9 @@ export const MemberCard = ({
   return (
     <motion.div
       variants={cardVariants}
+      initial={animateIndependent ? "hidden" : undefined}
+      whileInView={animateIndependent ? "visible" : undefined}
+      viewport={animateIndependent ? { once: true, amount: 0.05 } : undefined}
       className="motion-safe:will-change-transform"
     >
       <motion.div

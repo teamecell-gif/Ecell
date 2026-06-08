@@ -1,5 +1,7 @@
+import ComingSoon from "@/components/ComingSoon";
+
 const Flagship = () => {
-  return null;
+  return <ComingSoon title="Flagship" />;
 };
 
 export default Flagship;

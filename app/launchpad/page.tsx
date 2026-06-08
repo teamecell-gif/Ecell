@@ -3,18 +3,18 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import React, { useState } from "react";
-import { Button } from "@/lpui/ui/button";
-import { Input } from "@/lpui/ui/input";
-import { Label } from "@/lpui/ui/label";
-import { Textarea } from "@/lpui/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/lpui/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/lpui/ui/card";
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Rocket,
   Lightbulb,
