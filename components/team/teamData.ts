@@ -145,7 +145,7 @@ export const coreMembers: TeamMember[] = [
   },
   {
     name: "Shailesh Tiwari",
-    role: "Head of Growth & Partnerships",
+    role: "Head of Product",
     image: shaileshTiwari,
     linkedin: "https://linkedin.com/in/shailesh-tiwari-607190314",
     email: "shailesh9565824542@gmail.com",
@@ -153,7 +153,7 @@ export const coreMembers: TeamMember[] = [
   },
   {
     name: "Shivansh Tiwari",
-    role: "Head of Growth & Partnerships",
+    role: "Head of Product",
     image: shivansh,
     linkedin: "https://www.linkedin.com/in/shivansh-tiwari-68ab15235",
     email: "shivansht2018@gmail.com",
