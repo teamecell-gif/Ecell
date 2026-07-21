@@ -46,7 +46,7 @@ const ActiveEventCard = ({ event }: { event: EventItem }) => (
             {event.title}
           </h3>
           {event.tagline && (
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base line-clamp-3 sm:line-clamp-none">
+            <p className="hidden sm:block mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base">
               {event.tagline}
             </p>
           )}
