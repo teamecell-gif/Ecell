@@ -115,11 +115,11 @@ export const MemberCard = ({
             border-2 border-gradient-t-secondary
             ${featured ? "scale-95" : "scale-90"}
             motion-safe:transition-shadow motion-safe:duration-300
-            hover:shadow-[0_8px_40px_rgba(2,152,249,0.3)]
+            hover:shadow-[0_8px_40px_rgba(59,130,246,0.3)]
           `}
           style={isMobile ? undefined : { transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
         >
-          <div className="bg-gradient-to-b from-[rgba(2,152,249,0)] to-[rgba(8,107,234,0.5)]">
+          <div className="bg-gradient-to-b from-[rgba(59,130,246,0)] to-[rgba(37,99,235,0.5)]">
             <div className={`relative w-full ${featured ? "h-[380px]" : "h-[320px]"}`}>
               <Image
                 src={member.image}
@@ -146,7 +146,7 @@ export const MemberCard = ({
           <span
             className={`
               font-bold text-center text-transparent bg-clip-text
-              bg-gradient-to-b from-[#0298F9] to-[#086BEA] [text-wrap:balance]
+              bg-gradient-to-b from-ecell to-ecell-deep [text-wrap:balance]
               ${featured ? "text-3xl" : "text-2xl"}
             `}
           >

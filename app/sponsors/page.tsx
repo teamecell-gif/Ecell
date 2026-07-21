@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import SectionHeader from "@/components/ui/SectionHeader";
 import ecellLogo from "../../public/assets/ecell-logo.webp";
 
 import adobe from "../../public/assets/sponsors/adobe.webp";
@@ -98,7 +99,7 @@ const navigation = [
     { name: "Events", href: "/#events" },
     { name: "Team", href: "/team" },
     { name: "Sponsors", href: "/sponsors" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "mailto:corporateaffairs@ecellvnit.co.in" },
 ];
 
 const Sponsors = () => {
@@ -121,7 +122,7 @@ const Sponsors = () => {
                         <a
                             key={item.name}
                             href={item.href}
-                            className="text-xs lg:text-sm uppercase tracking-widest text-white/80 hover:text-[#0298F9] transition-colors duration-300 font-medium"
+                            className="text-xs lg:text-sm uppercase tracking-widest text-white/80 hover:text-ecell transition-colors duration-300 font-medium"
                         >
                             {item.name}
                         </a>
@@ -132,11 +133,7 @@ const Sponsors = () => {
             {/* Top padding for fixed navbar */}
             <div className="pt-24 md:pt-28 pb-16 px-6 md:px-16 lg:px-24">
                 {/* Page Title */}
-                <div className="flex justify-center items-center mb-16">
-                    <h1 className="uppercase text-transparent text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
-                        Our Sponsors
-                    </h1>
-                </div>
+                <SectionHeader category="Backing Our Vision" title="Our Sponsors" theme="light" className="mb-16" />
 
                 {/* Sponsor Groups */}
                 <div className="max-w-7xl mx-auto space-y-20">

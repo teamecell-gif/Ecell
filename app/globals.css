@@ -2,28 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (-webkit-device-pixel-ratio: 1.1) {
-  * {
-    font-size: 90%;
-    -moz-transform: scale(3);
-    -moz-transform-origin: 0 0;
-  }
-}
-
-@media (-webkit-device-pixel-ratio: 1.25) {
-  * {
-    font-size: 85%;
-    -moz-transform: scale(3);
-    -moz-transform-origin: 0 0;
-  }
-}
-
 .Toastify__toast {
   font-size: 15px;
 }
 
 @layer base {
   html {
-    @apply md:scroll-smooth;
+    @apply md:scroll-smooth font-sans;
+  }
+}
+
+@keyframes speakers-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.speakers-marquee-track {
+  animation: speakers-marquee 45s linear infinite;
+}
+
+.speakers-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speakers-marquee-track {
+    animation: none;
+    transform: translateX(0);
   }
 }

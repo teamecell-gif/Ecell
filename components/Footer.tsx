@@ -1,215 +1,218 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SITE_CONFIG } from "@/data/siteConfig";
 import ecellLogoWhite from "../public/assets/ecell-white-img.webp";
 
+/* ─── Social icon data ────────────────────────────────────────── */
+const socials = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ecellvnit/",
+    icon: (
+      <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          fillRule="evenodd"
+          d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+          clipRule="evenodd"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/theentrepreneurshipcellvnit/mycompany/",
+    icon: (
+      <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Facebook",
+    href: "https://m.facebook.com/vnitecell/",
+    icon: (
+      <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          fillRule="evenodd"
+          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+          clipRule="evenodd"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UC0KNOmODhqLcEpcfN9qEsIQ",
+    icon: (
+      <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: "X",
+    href: "https://x.com/ecell_vnit",
+    icon: (
+      <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+];
+
+/* ─── Link data ───────────────────────────────────────────────── */
+const initiatives = [
+  { label: "Startup Conclave", href: "https://startupconclave.ecellvnit.org/" },
+  { label: "Startup Expo", href: "https://expo.ecellvnit.org/" },
+  { label: "NEO", href: "https://neo.ecellvnit.org/" },
+  { label: "Launchpad", href: "/launchpad" },
+  { label: "IPL", href: "https://ipl.ecellvnit.org/" },
+];
+
+const moreLinks = [
+  { label: "Jugaad", href: "https://jugaad.ecellvnit.org/" },
+  { label: "CEO", href: "https://ceo.ecellvnit.org/" },
+  { label: "Wallstreet", href: "https://wallstreet.ecellvnit.org/" },
+  { label: "Sponsors", href: "/sponsors" },
+];
+
+/* ─── Reusable link column ────────────────────────────────────── */
+const LinkColumn = ({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) => (
+  <div className="flex flex-col gap-4">
+    <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white/50">
+      {title}
+    </h3>
+    <nav className="flex flex-col gap-3">
+      {links.map((link) => (
+        <Link
+          key={link.label}
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          className="text-base text-white/70 transition-colors duration-200 hover:text-white"
+        >
+          {link.label}
+        </Link>
+      ))}
+    </nav>
+  </div>
+);
+
+/* ─── Footer Component ────────────────────────────────────────── */
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-black text-white text-center">
-      <div className="px-4 pb-6 pt-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-            <div className="flex flex-col items-center">
-              <Image src={ecellLogoWhite} width={220} height={200} alt="logo" />
-            </div>
-            <div className="grid grid-cols-1 gap-6 lg:gap-x-24 xl:gap-x-6 md:grid-cols-2 xl:grid-cols-4 lg:col-span-3">
-              <div className="flex flex-col items-center gap-2">
-                <a
-                  href="https://consortium.ecellvnit.org/"
-                  className="font-bold text-xl uppercase text-start"
+    <footer id="footer" className="bg-[#0A0A0A] text-white">
+
+      {/* ── Main 5-column grid ── */}
+      <div className="px-8 py-14 md:px-12 lg:px-16">
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-12">
+
+          {/* Column 1: Logo + Social */}
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-6">
+            <Link href="/">
+              <Image
+                src={ecellLogoWhite}
+                width={200}
+                height={180}
+                alt="E-Cell VNIT Logo"
+                className="object-contain"
+              />
+            </Link>
+            <p className="text-sm leading-relaxed text-white/50 max-w-xs">
+              The Entrepreneurship Cell, VNIT Nagpur
+            </p>
+            <div className="flex items-center gap-4">
+              {socials.map((s) => (
+                <Link
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="text-white/40 transition-colors duration-300 hover:text-ecell"
                 >
-                  Consortium&apos;25
-                </a>
-                <p className="text-center text-base mt-4 w-1/2 lg:w-full">
-                  Consortium, the Annual Entrepreneurship Summit and Management
-                  Fest of VNIT, Nagpur
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <p className="font-bold text-xl uppercase text-start">
-                  Quick Links
-                </p>
-                <nav className="flex flex-col mt-4 space-y-2 items-center lg:items-start text-sm text-white">
-                  <Link
-                    className="hover:opacity-75 uppercase"
-                    href="https://startupconclave.ecellvnit.org/"
-                  >
-                    Startup Conclave
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 uppercase"
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://expo.ecellvnit.org/"
-                  >
-                    Startup Expo
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 uppercase"
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.ecellvnit.org/merchandise/index.php"
-                  >
-                    Merchandise
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 uppercase"
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://neo.ecellvnit.org/"
-                  >
-                    NEO
-                  </Link>
-                </nav>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <p className="font-bold text-xl uppercase text-start">
-                  Contact Us
-                </p>
-                <nav className="flex flex-col space-y-2 mt-4 text-center text-sm xl:text-base text-white">
-                  <a
-                    className="hover:opacity-75"
-                    target="_blank"
-                    rel="noreferrer"
-                    href="mailto:contact@ecellvnit.org"
-                  >
-                    For Public Affairs & Communications: <br />
-                    <strong>publicrelations@ecellvnit.co.in</strong>
-                  </a>
-                  <a
-                    className="hover:opacity-75"
-                    target="_blank"
-                    rel="noreferrer"
-                    href="mailto:corporateaffairs@ecellvnit.co.in"
-                  >
-                    For Association and Sponsorship: <br />
-                    <strong>corporateaffairs@ecellvnit.co.in</strong>
-                  </a>
-                </nav>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <p className="font-bold text-xl uppercase">Follow Us</p>
-                <nav className="flex flex-col mt-4 space-y-3 items-start text-sm text-white">
-                  <Link
-                    className="hover:opacity-75 flex justify-center gap-4"
-                    href="https://www.instagram.com/ecellvnit/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M14.9962 9.99787C12.2419 9.99787 9.99412 12.2456 9.99412 15C9.99412 17.7544 12.2419 20.0021 14.9962 20.0021C17.7506 20.0021 19.9984 17.7544 19.9984 15C19.9984 12.2456 17.7506 9.99787 14.9962 9.99787ZM29.9989 15C29.9989 12.9286 30.0176 10.876 29.9013 8.80832C29.785 6.40669 29.2371 4.27525 27.4809 2.51907C25.721 0.759128 23.5933 0.215011 21.1917 0.098682C19.1203 -0.0176466 17.0676 0.00111617 15 0.00111617C12.9286 0.00111617 10.876 -0.0176466 8.80832 0.098682C6.40669 0.215011 4.27525 0.762881 2.51907 2.51907C0.759128 4.27901 0.215011 6.40669 0.098682 8.80832C-0.0176466 10.8797 0.00111617 12.9324 0.00111617 15C0.00111617 17.0676 -0.0176466 19.124 0.098682 21.1917C0.215011 23.5933 0.762881 25.7247 2.51907 27.4809C4.27901 29.2409 6.40669 29.785 8.80832 29.9013C10.8797 30.0176 12.9324 29.9989 15 29.9989C17.0714 29.9989 19.124 30.0176 21.1917 29.9013C23.5933 29.785 25.7247 29.2371 27.4809 27.4809C29.2409 25.721 29.785 23.5933 29.9013 21.1917C30.0214 19.124 29.9989 17.0714 29.9989 15ZM14.9962 22.6964C10.7371 22.6964 7.2998 19.2591 7.2998 15C7.2998 10.7409 10.7371 7.30355 14.9962 7.30355C19.2554 7.30355 22.6927 10.7409 22.6927 15C22.6927 19.2591 19.2554 22.6964 14.9962 22.6964ZM23.0079 8.7858C22.0135 8.7858 21.2104 7.98276 21.2104 6.98834C21.2104 5.99392 22.0135 5.19087 23.0079 5.19087C24.0023 5.19087 24.8054 5.99392 24.8054 6.98834C24.8057 7.22447 24.7594 7.45834 24.6692 7.67655C24.5789 7.89476 24.4465 8.09303 24.2796 8.26C24.1126 8.42697 23.9143 8.55936 23.6961 8.64958C23.4779 8.73981 23.244 8.7861 23.0079 8.7858Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span className="text-lg">Instagram</span>
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 flex justify-center gap-4"
-                    href="https://www.linkedin.com/company/theentrepreneurshipcellvnit/mycompany/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M15 0C6.71562 0 0 6.71562 0 15C0 23.2844 6.71562 30 15 30C23.2844 30 30 23.2844 30 15C30 6.71562 23.2844 0 15 0ZM11.3281 21.2172H8.29062V11.4422H11.3281V21.2172ZM9.79062 10.2422C8.83125 10.2422 8.21094 9.5625 8.21094 8.72187C8.21094 7.86406 8.85 7.20469 9.82969 7.20469C10.8094 7.20469 11.4094 7.86406 11.4281 8.72187C11.4281 9.5625 10.8094 10.2422 9.79062 10.2422ZM22.4219 21.2172H19.3844V15.8C19.3844 14.5391 18.9437 13.6828 17.8453 13.6828C17.0063 13.6828 16.5078 14.2625 16.2875 14.8203C16.2062 15.0188 16.1859 15.3 16.1859 15.5797V21.2156H13.1469V14.5594C13.1469 13.3391 13.1078 12.3187 13.0672 11.4406H15.7062L15.8453 12.7984H15.9062C16.3062 12.1609 17.2859 11.2203 18.925 11.2203C20.9234 11.2203 22.4219 12.5594 22.4219 15.4375V21.2172Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span className="text-lg">LinkedIn</span>
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 flex justify-center gap-4"
-                    href="https://m.facebook.com/vnitecell/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M0 15.0838C0 22.5413 5.41625 28.7425 12.5 30V19.1663H8.75V15H12.5V11.6663C12.5 7.91625 14.9163 5.83375 18.3337 5.83375C19.4163 5.83375 20.5837 6 21.6663 6.16625V10H19.75C17.9163 10 17.5 10.9163 17.5 12.0837V15H21.5L20.8337 19.1663H17.5V30C24.5837 28.7425 30 22.5425 30 15.0838C30 6.7875 23.25 0 15 0C6.75 0 0 6.7875 0 15.0838Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span className="text-lg">Facebook</span>
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 flex justify-center gap-4"
-                    href="https://www.youtube.com/channel/UC0KNOmODhqLcEpcfN9qEsIQ"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.5047 14.7391L13.9953 13.1016C13.6891 12.9594 13.4375 13.1187 13.4375 13.4578V16.5422C13.4375 16.8813 13.6891 17.0406 13.9953 16.8984L17.5031 15.2609C17.8109 15.1172 17.8109 14.8828 17.5047 14.7391ZM15 0C6.71562 0 0 6.71562 0 15C0 23.2844 6.71562 30 15 30C23.2844 30 30 23.2844 30 15C30 6.71562 23.2844 0 15 0ZM15 21.0937C7.32188 21.0937 7.1875 20.4016 7.1875 15C7.1875 9.59844 7.32188 8.90625 15 8.90625C22.6781 8.90625 22.8125 9.59844 22.8125 15C22.8125 20.4016 22.6781 21.0937 15 21.0937Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span className="text-lg">YouTube</span>
-                  </Link>
-                  <Link
-                    className="hover:opacity-75 flex justify-center gap-4"
-                    href="https://twitter.com/ecell_vnit"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M15 0C6.71562 0 0 6.71562 0 15C0 23.2844 6.71562 30 15 30C23.2844 30 30 23.2844 30 15C30 6.71562 23.2844 0 15 0ZM21.1016 12.2875C21.1078 12.4156 21.1094 12.5437 21.1094 12.6687C21.1094 16.575 18.1391 21.0766 12.7047 21.0766C11.0989 21.0792 9.52651 20.618 8.17656 19.7484C8.40625 19.7766 8.64219 19.7875 8.88125 19.7875C10.2656 19.7875 11.5391 19.3172 12.55 18.5234C11.9339 18.5113 11.337 18.3073 10.8424 17.9399C10.3477 17.5724 9.98008 17.0598 9.79062 16.4734C10.2331 16.5576 10.6888 16.5399 11.1234 16.4219C10.4548 16.2867 9.85343 15.9243 9.42142 15.3963C8.9894 14.8684 8.75329 14.2072 8.75312 13.525V13.4891C9.15156 13.7094 9.60781 13.8438 10.0922 13.8594C9.46531 13.4421 9.02154 12.801 8.85163 12.0674C8.68172 11.3337 8.79852 10.5629 9.17812 9.9125C9.92024 10.825 10.8457 11.5715 11.8946 12.1036C12.9436 12.6357 14.0925 12.9417 15.2672 13.0016C15.1178 12.3677 15.1821 11.7022 15.45 11.1086C15.7179 10.515 16.1744 10.0265 16.7485 9.71916C17.3227 9.41178 17.9823 9.30269 18.6248 9.40886C19.2674 9.51503 19.8568 9.83051 20.3016 10.3062C20.9628 10.1754 21.5968 9.9329 22.1766 9.58906C21.9562 10.2736 21.4948 10.855 20.8781 11.225C21.4638 11.1545 22.0357 10.997 22.575 10.7578C22.1789 11.3514 21.6799 11.8694 21.1016 12.2875Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span className="text-lg">Twitter</span>
-                  </Link>
-                </nav>
-              </div>
+                  {s.icon}
+                </Link>
+              ))}
             </div>
           </div>
-          <div className="flex flex-col md:pl-16 justify-center items-center pt-10">
-            <p className="font-bold text-xl uppercase">Visit us</p>
-            <p className="text-center lg:text-start text-sm lg:text-base mt-4 w-full lg:w-1/3">
-              E-Cell office, 1st Floor VNIT Canteen, Visvesvaraya National
-              Institute Of Technology, South Ambazari Road, Abhyankar Nagar,
-              Nagpur-440010
-            </p>
-            <p className="mt-8 text-2xl text-white">
-              Copyright:
-              <span className="text-[#0298F9]">{} E-CELL VNIT</span>
-            </p>
+
+          {/* Column 2: Consortium (standalone highlighted) */}
+          <div className="flex flex-col gap-4">
+            <Link
+              href="https://consortium.ecellvnit.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col gap-2"
+            >
+              <span className="text-xl font-bold text-ecell transition-colors duration-300 group-hover:text-ecell-light">
+                Consortium&apos;25
+              </span>
+              <span className="text-sm text-white/50 leading-relaxed">
+                Annual Entrepreneurship Summit & Management Fest of VNIT, Nagpur
+              </span>
+            </Link>
           </div>
+
+          {/* Column 3: Initiatives */}
+          <LinkColumn title="Initiatives" links={initiatives} />
+
+          {/* Column 4: More */}
+          <LinkColumn title="More" links={moreLinks} />
+
+          {/* Column 5: Contact */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white/50">
+              Get in Touch
+            </h3>
+            <div className="flex flex-col gap-5">
+              {/* Address */}
+              <div className="flex items-start gap-2.5">
+                <svg className="h-5 w-5 mt-0.5 shrink-0 text-ecell" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  E-Cell Office, 1st Floor VNIT Canteen, South Ambazari Road, Nagpur — 440010
+                </p>
+              </div>
+              {/* Email */}
+              <a
+                href={SITE_CONFIG.contacts.corporateAffairs}
+                className="flex items-start gap-2.5 text-sm text-white/60 transition-colors duration-200 hover:text-white"
+              >
+                <svg className="h-5 w-5 mt-0.5 shrink-0 text-ecell" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+                <span>corporateaffairs@ecellvnit.co.in</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-white/10">
+        <div className="px-8 py-5 md:px-12 lg:px-16 flex items-center justify-center">
+          <p className="text-sm text-white/30">
+            © {new Date().getFullYear()}{" "}
+            <span className="text-ecell">E-Cell VNIT</span>. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
 };
+
 export default Footer;

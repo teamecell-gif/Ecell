@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import SectionHeader from "./ui/SectionHeader";
+import SectionBackground from "./ui/SectionBackground";
 import type { StaticImageData } from "next/image";
 
 interface Initiative {
@@ -9,6 +14,7 @@ interface Initiative {
   image: StaticImageData | string;
   link: string;
   imageAlt: string;
+  external?: boolean;
 }
 
 const initiativesData: Initiative[] = [
@@ -16,160 +22,114 @@ const initiativesData: Initiative[] = [
     id: "launchpad",
     title: "Launchpad",
     description:
-      "Got an idea that can change the game?  Launchpad is your chance to pitch, build, and shine! Join E-Cell's ultimate idea-stage startup competition, get mentored by industry pros, and take your first step toward becoming a founder. Registrations are now open - let's launch your dream!.",
+      "Got an idea that can change the game? Launchpad is your chance to pitch, build, and shine! Join E-Cell's ultimate idea-stage startup competition, get mentored by industry pros, and take your first step toward becoming a founder. Registrations are now open — let's launch your dream!",
     image: "/assets/LP.webp",
     link: "/launchpad",
     imageAlt: "Launchpad Initiative",
+    external: false,
   },
   {
     id: "neo",
     title: "Neo",
     description:
-      "National Entrepreneurship Olympiad is a PAN - India examination and a skill enhancement program for the students of class 6th to 12th grade to nurture and test their entrepreneurial skills. This Olympiad includes sections like Basic Entrepreneurial Concepts, Value Proposition, Finances...",
+      "National Entrepreneurship Olympiad is a PAN-India examination and a skill enhancement program for students of class 6th to 12th grade to nurture and test their entrepreneurial skills. This Olympiad includes sections like Basic Entrepreneurial Concepts, Value Proposition, Finances and more.",
     image: "/assets/NEO.webp",
     link: "https://neo.ecellvnit.org/",
     imageAlt: "NEO Initiative",
-  },
-  {
-    id: "csuites",
-    title: "C-suites",
-    description:
-      "C-Suites is a community of like-minded people within VNIT Nagpur where we grow ourselves individually along with people around us. The mission seeks to create a self-sustained ecosystem, where peers discuss and learn from each other through regular group interactions.",
-    image: "/assets/CS.webp",
-    link: "https://csuites.ecellvnit.org/",
-    imageAlt: "C-Suites Initiative",
+    external: true,
   },
 ];
 
-const GradientLine = ({ className = "" }: { className?: string }) => (
-  <svg
-    className={`w-full max-w-md ${className}`}
-    height="1"
-    viewBox="0 0 400 1"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <line y1="0.5" x2="400" y2="0.5" stroke="url(#paint0_linear)" />
-    <defs>
-      <linearGradient
-        id="paint0_linear"
-        x1="0"
-        y1="1"
-        x2="400"
-        y2="1"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="white" stopOpacity="0" />
-        <stop offset="0.5" stopColor="white" />
-        <stop offset="1" stopColor="white" stopOpacity="0" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
+/* ─── Animation variants ──────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
 
+/* ─── Initiative Card ─────────────────────────────────────────── */
 const InitiativeCard = ({
   initiative,
+  reversed = false,
 }: {
   initiative: Initiative;
+  reversed?: boolean;
 }) => (
-  <div className="flex flex-col items-center justify-start group h-full">
-    {/* Logo area with fixed height */}
-    <div className="flex flex-col items-center mb-8">
-      <div className="relative h-24 w-48 flex items-center justify-center">
-        <Image
-          src={initiative.image}
-          alt={initiative.imageAlt}
-          fill
-          className="object-contain transition-transform duration-300 group-hover:scale-105"
-        />
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    <div
+      className={`group flex flex-col items-center gap-10 rounded-2xl bg-white/[0.03] backdrop-blur-sm p-8 md:p-12 transition-colors duration-300 hover:bg-white/[0.06] ${reversed ? "lg:flex-row-reverse" : "lg:flex-row"
+        }`}
+    >
+      {/* Logo / Image */}
+      <div className="flex w-full items-center justify-center lg:w-2/5">
+        <div className="relative h-36 w-64 md:h-44 md:w-72 transition-transform duration-500 group-hover:scale-105">
+          <Image
+            src={initiative.image}
+            alt={initiative.imageAlt}
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
-      <GradientLine className="mt-4" />
-    </div>
 
-    {/* Content Card */}
-    <div className="w-full max-w-sm bg-[#161616] p-8 flex flex-col justify-between h-full min-h-[380px] transition-colors duration-300 group-hover:bg-[#1a1a1a] rounded-lg">
-      <div className="flex-1">
-        <h3 className="uppercase font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] mb-4">
+      {/* Content */}
+      <div className="flex w-full flex-col gap-6 lg:w-3/5">
+        <h3 className="text-3xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-ecell to-ecell-deep md:text-4xl">
           {initiative.title}
         </h3>
-        <p className="text-sm xl:text-base text-white leading-relaxed">
+        <p className="text-sm leading-relaxed text-white/70 md:text-base lg:text-lg lg:leading-8">
           {initiative.description}
         </p>
+        <Link
+          href={initiative.link}
+          target={initiative.external ? "_blank" : undefined}
+          rel={initiative.external ? "noopener noreferrer" : undefined}
+          className="group/link inline-flex items-center gap-2 text-ecell font-semibold uppercase tracking-wider text-sm transition-colors duration-300 hover:text-ecell-light w-fit"
+        >
+          Explore {initiative.title}
+          <svg
+            className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </Link>
       </div>
-
-      <Link
-        href={initiative.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full bg-transparent border-2 border-[#0298F9] uppercase text-center text-lg py-4 mt-8 text-[#0298F9] font-semibold transition-colors duration-300 hover:bg-[#0298F9] hover:text-white rounded-md"
-      >
-        Know More
-      </Link>
     </div>
-  </div>
+  </motion.div>
 );
 
+/* ─── Main Section ────────────────────────────────────────────── */
 const Initiatives = () => {
   return (
-    <div
-      id="initiatives"
-      className="min-h-screen mt-20 bg-black"
-    >
-      <div className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.2)]">
-        {/* Header */}
-        <div className="flex flex-col gap-6 items-center justify-center text-5xl lg:text-7xl xl:text-[80px] font-bold mb-20">
-          <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
-            Initiatives
-          </span>
-          <svg
-            width="450"
-            height="1"
-            viewBox="0 0 580 1"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="max-w-full"
-          >
-            <line y1="0.5" x2="580" y2="0.5" stroke="url(#paint0_linear_header)" />
-            <defs>
-              <linearGradient
-                id="paint0_linear_header"
-                x1="622.006"
-                y1="1"
-                x2="-40.7939"
-                y2="0.999999"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="white" stopOpacity="0" />
-                <stop offset="0.501042" stopColor="white" />
-                <stop offset="1" stopColor="white" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+    <section id="initiatives" className="mt-20 bg-black py-16">
+      <SectionBackground variant="particles">
+        <div className="bg-gradient-to-b from-transparent to-black/20">
+          <SectionHeader category="Our Programs" title="Initiatives" />
 
-        {/* Dynamic Grid */}
-        <div className="container mx-auto px-6">
-          <div
-            className={`grid gap-16 justify-center items-stretch ${
-              initiativesData.length === 1
-                ? "grid-cols-1 max-w-lg mx-auto"
-                : initiativesData.length === 2
-                ? "grid-cols-1 lg:grid-cols-2 max-w-4xl mx-auto"
-                : initiativesData.length === 3
-                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
-                : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto"
-            }`}
-          >
+          <div className="mx-auto mt-16 flex max-w-5xl flex-col gap-10 px-6">
             {initiativesData.map((initiative, index) => (
               <InitiativeCard
                 key={initiative.id}
                 initiative={initiative}
+                reversed={index % 2 !== 0}
               />
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </SectionBackground>
+    </section>
   );
 };
 

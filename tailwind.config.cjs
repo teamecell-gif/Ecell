@@ -13,10 +13,19 @@ module.exports = {
 			xs: "475px",
 			...defaultTheme.screens,
     },
+    extend: {
+      colors: {
+        ecell: {
+          light: '#60A5FA',
+          DEFAULT: '#3B82F6',
+          deep: '#2563EB',
+        },
+      },
+    },
     linearBorderGradients: {
       colors: {
-        "primary": ["#0298F9", "#086BEA"],
-        "secondary": ["#086BEA", "#0298F9"],
+        "primary": ["#3B82F6", "#2563EB"],
+        "secondary": ["#2563EB", "#3B82F6"],
       },
       directions: {
         "t": "to top",

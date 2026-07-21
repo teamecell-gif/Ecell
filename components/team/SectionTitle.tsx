@@ -2,19 +2,18 @@
 
 import { motion } from "framer-motion";
 import { titleVariants } from "./animations";
-import { GradientDivider } from "./Icons";
 
 export const SectionTitle = ({ title }: { title: string }) => (
   <motion.div
-    className="flex flex-col gap-3 items-center justify-center text-4xl xl:text-5xl font-semibold"
+    className="flex flex-col items-center justify-center text-center"
     variants={titleVariants}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.5 }}
   >
-    <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
+    <div className="w-[1px] h-12 bg-white/30 mb-4" />
+    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white uppercase">
       {title}
-    </span>
-    <GradientDivider />
+    </h2>
   </motion.div>
 );

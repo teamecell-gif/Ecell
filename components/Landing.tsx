@@ -55,11 +55,11 @@ const socials = [
     ),
   },
   {
-    label: "Twitter",
-    href: "https://twitter.com/ecell_vnit",
+    label: "X",
+    href: "https://x.com/ecell_vnit",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
     ),
   },
@@ -96,18 +96,18 @@ const Landing = () => {
   return (
     <section
       id="home"
-      className="relative w-full h-screen overflow-hidden"
-      style={{
-        backgroundImage: "url('/assets/andywang.webp')",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="relative w-full h-screen overflow-hidden bg-black"
     >
+      {/* ── Blurred Background Image ── */}
+      <div
+        className="absolute -inset-4 bg-cover bg-center bg-no-repeat bg-fixed blur-[4px] scale-[1.03]"
+        style={{
+          backgroundImage: "url('/assets/andywang.webp')",
+        }}
+      />
 
       {/* ── Dark Overlay ── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90 z-[1]" />
 
       {/* ── Left Sidebar: Social Icons ── */}
       <div className="hidden md:flex absolute left-6 lg:left-10 top-0 bottom-0 z-20 flex-col items-center justify-center">
@@ -126,7 +126,7 @@ const Landing = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="block text-white/80 hover:text-[#0298F9] transition-colors duration-300 [&_svg]:w-7 [&_svg]:h-7"
+                className="block text-white/80 hover:text-ecell transition-colors duration-300 [&_svg]:w-7 [&_svg]:h-7"
               >
                 {s.icon}
               </Link>
@@ -144,36 +144,42 @@ const Landing = () => {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold uppercase leading-[0.95] tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-xl"
         >
-          <span className="block text-white drop-shadow-lg">The</span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0298F9] to-[#086BEA] drop-shadow-lg py-2">
-            Entrepreneurship
-          </span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#086BEA] to-[#0298F9] drop-shadow-lg">
-            Cell
-          </span>
+          The Entrepreneurship Cell
         </motion.h1>
 
         {/* Sub-heading */}
-        <motion.h2
+        <motion.div
           custom={2}
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-4 md:mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white/90 tracking-[0.2em] uppercase drop-shadow-md"
+          className="mt-2 text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-[0.25em] text-ecell"
         >
           VNIT Nagpur
-        </motion.h2>
+        </motion.div>
 
-        {/* Explore Button */}
-        <motion.button
+        {/* Tagline */}
+        <motion.p
           custom={3}
           variants={fadeUp}
           initial="hidden"
           animate="visible"
+          className="mt-5 md:mt-7 max-w-4xl text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white leading-relaxed tracking-wide drop-shadow-md"
+        >
+          Guiding Founders from Zero to Zenith through<br className="hidden sm:inline" />{" "}
+          <span className="font-normal text-white">Innovation, Mentorship, and Enterprise.</span>
+        </motion.p>
+
+        {/* Explore Button */}
+        <motion.button
+          custom={4}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
           onClick={handleClickScroll}
-          className="mt-10 md:mt-14 text-sm sm:text-base font-bold text-[#0298F9] bg-transparent border-2 border-[#0298F9] px-8 py-3 uppercase tracking-widest hover:bg-[#0298F9] hover:text-white transition-colors duration-300 cursor-pointer"
+          className="mt-10 md:mt-12 text-sm sm:text-base font-bold text-ecell bg-transparent border-2 border-ecell px-8 py-3 uppercase tracking-widest hover:bg-ecell hover:text-white transition-colors duration-300 cursor-pointer rounded-sm"
         >
           Explore
         </motion.button>
@@ -181,7 +187,7 @@ const Landing = () => {
 
       {/* ── Right Side Scroll Indicator ── */}
       <motion.div
-        className="hidden md:flex absolute right-6 lg:right-10 bottom-10 z-20 flex-col items-center gap-3 cursor-pointer text-white hover:text-[#0298F9] transition-colors"
+        className="hidden md:flex absolute right-6 lg:right-10 bottom-10 z-20 flex-col items-center gap-3 cursor-pointer text-white hover:text-ecell transition-colors"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.8 }}
@@ -208,7 +214,7 @@ const Landing = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={s.label}
-            className="text-white/70 hover:text-[#0298F9] transition-colors"
+            className="text-white/70 hover:text-ecell transition-colors"
           >
             {s.icon}
           </Link>

@@ -155,9 +155,9 @@ const Launchpad = () => {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
-              <Rocket className="h-12 w-12 text-[#0298F9] mr-4" />
+              <Rocket className="h-12 w-12 text-ecell mr-4" />
               <h1 className="text-4xl md:text-6xl font-bold text-white">
-                Launch<span className="text-[#0298F9]">pad</span>
+                Launch<span className="text-ecell">pad</span>
               </h1>
             </div>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -168,7 +168,7 @@ const Launchpad = () => {
 
           <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-[#0298F9] flex items-center justify-center">
+              <CardTitle className="text-2xl text-ecell flex items-center justify-center">
                 <Lightbulb className="h-6 w-6 mr-2" />
                 Startup Proposal Form
               </CardTitle>
@@ -179,7 +179,7 @@ const Launchpad = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-white flex items-center">
-                      <Users className="h-4 w-4 mr-2 text-[#0298F9]" />
+                      <Users className="h-4 w-4 mr-2 text-ecell" />
                       Full Name
                     </Label>
                     <Input
@@ -189,7 +189,7 @@ const Launchpad = () => {
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
                       required
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9]"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell"
                     />
                   </div>
 
@@ -204,7 +204,7 @@ const Launchpad = () => {
                       value={formData.collegeName}
                       onChange={(e) => handleInputChange("collegeName", e.target.value)}
                       required
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9]"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell"
                     />
                   </div>
                 </div>
@@ -221,7 +221,7 @@ const Launchpad = () => {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     required
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9]"
+                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell"
                   />
                 </div>
 
@@ -234,7 +234,7 @@ const Launchpad = () => {
                     value={formData.yearOfStudy}
                     onValueChange={(value) => handleInputChange("yearOfStudy", value)}
                   >
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white focus:border-[#0298F9] focus:ring-[#0298F9]">
+                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white focus:border-ecell focus:ring-ecell">
                       <SelectValue placeholder="Select your year of study" />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
@@ -288,7 +288,7 @@ const Launchpad = () => {
                           placeholder={`Teammate ${idx + 1} full name`}
                           value={member}
                           onChange={(e) => handleTeammateChange(idx, e.target.value)}
-                          className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9]"
+                          className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell"
                         />
                         <button
                           type="button"
@@ -307,7 +307,7 @@ const Launchpad = () => {
                 <div className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="problemStatement" className="text-white flex items-center">
-                      <Target className="h-4 w-4 mr-2 text-[#0298F9]" />
+                      <Target className="h-4 w-4 mr-2 text-ecell" />
                       Problem Statement
                     </Label>
                     <Textarea
@@ -317,13 +317,13 @@ const Launchpad = () => {
                       onChange={(e) => handleInputChange("problemStatement", e.target.value)}
                       required
                       rows={4}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9] resize-none"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell resize-none"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="solution" className="text-white flex items-center">
-                      <Lightbulb className="h-4 w-4 mr-2 text-[#0298F9]" />
+                      <Lightbulb className="h-4 w-4 mr-2 text-ecell" />
                       Solution / Innovation
                     </Label>
                     <Textarea
@@ -333,13 +333,13 @@ const Launchpad = () => {
                       onChange={(e) => handleInputChange("solution", e.target.value)}
                       required
                       rows={4}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9] resize-none"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell resize-none"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="targetMarketSize" className="text-white flex items-center">
-                      <TrendingUp className="h-4 w-4 mr-2 text-[#0298F9]" />
+                      <TrendingUp className="h-4 w-4 mr-2 text-ecell" />
                       Target Market Size
                     </Label>
                     <Textarea
@@ -349,7 +349,7 @@ const Launchpad = () => {
                       onChange={(e) => handleInputChange("targetMarketSize", e.target.value)}
                       required
                       rows={3}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9] resize-none"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell resize-none"
                     />
                   </div>
 
@@ -364,13 +364,13 @@ const Launchpad = () => {
                       onChange={(e) => handleInputChange("businessModel", e.target.value)}
                       required
                       rows={3}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9] resize-none"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell resize-none"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="goToMarketStrategy" className="text-white flex items-center">
-                      <Strategy className="h-4 w-4 mr-2 text-[#0298F9]" />
+                      <Strategy className="h-4 w-4 mr-2 text-ecell" />
                       Go-to-Market Strategy
                     </Label>
                     <Textarea
@@ -380,13 +380,13 @@ const Launchpad = () => {
                       onChange={(e) => handleInputChange("goToMarketStrategy", e.target.value)}
                       required
                       rows={3}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9] resize-none"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell resize-none"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="competitiveAdvantage" className="text-white flex items-center">
-                      <Award className="h-4 w-4 mr-2 text-[#0298F9]" />
+                      <Award className="h-4 w-4 mr-2 text-ecell" />
                       Competitive Advantage
                     </Label>
                     <Textarea
@@ -396,7 +396,7 @@ const Launchpad = () => {
                       onChange={(e) => handleInputChange("competitiveAdvantage", e.target.value)}
                       required
                       rows={3}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-[#0298F9] focus:ring-[#0298F9] resize-none"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-ecell focus:ring-ecell resize-none"
                     />
                   </div>
                 </div>
@@ -405,7 +405,7 @@ const Launchpad = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-[#0298F9] hover:bg-[#0298F9]/80 text-white px-12 py-3 text-lg font-semibold transition-[background-color,transform] duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-ecell hover:bg-ecell/80 text-white px-12 py-3 text-lg font-semibold transition-[background-color,transform] duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">

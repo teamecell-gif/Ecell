@@ -2,6 +2,7 @@
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import SectionHeader from "@/components/ui/SectionHeader";
 import { motion } from "framer-motion";
 import { GradientDivider } from "@/components/team/Icons";
 import {
@@ -23,17 +24,7 @@ const Team = () => {
         <div className="w-full h-full flex justify-center overflow-hidden">
           <div className="w-full max-w-6xl 2xl:max-w-[95%] p-6">
             {/* ── Page Title ── */}
-            <motion.div
-              className="flex flex-col gap-3 items-center justify-center text-4xl xs:text-5xl lg:text-6xl font-semibold"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <h1 className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
-                Our Team
-              </h1>
-              <GradientDivider />
-            </motion.div>
+            <SectionHeader category="The People Behind E-Cell" title="Our Team" />
 
             {/* ── Faculty Section ── */}
             <motion.section

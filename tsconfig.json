@@ -37,6 +37,7 @@
     "C:\\Users\\samit\\Documents\\Ecell\\.next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "Conso26-main"
   ]
 }

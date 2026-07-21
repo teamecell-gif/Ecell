@@ -1,249 +1,192 @@
-import flagship from "../public/assets/flagship.webp";
-import suc from "../public/assets/suc.webp";
-import jugaad from "../public/assets/jugaad.webp";
-import adventure from "../public/assets/adventure.webp";
-import wallstreet from "../public/assets/wallstreet.webp";
-import ceo from "../public/assets/ceo.webp";
-import render from "../public/assets/render.webp";
-import ipl from "../public/assets/ipl.webp";
-import swades from "../public/assets/swades.webp";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
+import { eventsData, type EventItem, type EventStatus } from "@/data/events";
+import SectionHeader from "./ui/SectionHeader";
+import SectionBackground from "./ui/SectionBackground";
 
-const Events = () => {
+const EventLink = ({
+  event,
+  className,
+  children,
+}: {
+  event: EventItem;
+  className: string;
+  children: ReactNode;
+}) => (
+  <Link
+    href={event.href}
+    target={event.external ? "_blank" : undefined}
+    rel={event.external ? "noopener noreferrer" : undefined}
+    className={className}
+  >
+    {children}
+  </Link>
+);
+
+const ActiveEventCard = ({ event }: { event: EventItem }) => (
+  <div className="relative overflow-hidden rounded-lg border border-ecell/40 bg-[#101827] p-6 shadow-[0_0_50px_rgba(59,130,246,0.16)]">
+    <div className="grid gap-8 md:grid-cols-[220px_1fr] md:items-center">
+      <div className="relative h-36 w-full">
+        <Image
+          src={event.image}
+          alt={event.title}
+          fill
+          sizes="(min-width: 768px) 220px, 80vw"
+          className="object-contain"
+        />
+      </div>
+      <div className="flex flex-col gap-5">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-ecell/40 bg-ecell/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-ecell-light">
+            <span className="h-2 w-2 rounded-full bg-ecell" />
+            Live
+          </span>
+          <h3 className="mt-4 text-3xl font-bold uppercase text-white md:text-4xl">
+            {event.title}
+          </h3>
+          {event.tagline && (
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base">
+              {event.tagline}
+            </p>
+          )}
+        </div>
+
+        {(event.deadline || event.prizePool) && (
+          <div className="grid gap-3 text-sm text-white/75 sm:grid-cols-2">
+            {event.deadline && (
+              <div className="rounded-md bg-white/5 p-3">
+                <span className="block text-xs uppercase tracking-[0.18em] text-white/40">
+                  Deadline
+                </span>
+                <span className="mt-1 block font-semibold text-white">
+                  {event.deadline}
+                </span>
+              </div>
+            )}
+            {event.prizePool && (
+              <div className="rounded-md bg-white/5 p-3">
+                <span className="block text-xs uppercase tracking-[0.18em] text-white/40">
+                  Prize Pool
+                </span>
+                <span className="mt-1 block font-semibold text-white">
+                  {event.prizePool}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
+        <EventLink
+          event={event}
+          className="w-fit rounded-md bg-ecell px-7 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:bg-ecell-deep"
+        >
+          Register Now
+        </EventLink>
+      </div>
+    </div>
+  </div>
+);
+
+const EventCard = ({ event }: { event: EventItem }) => {
+  const isActive = event.status === "active";
+  const isComingSoon = event.status === "comingSoon";
+
   return (
     <div
-      id="events"
-      className="min-h-screen mt-20 bg-black"
+      className={`group relative flex min-h-[360px] flex-col justify-between rounded-lg border bg-[#111111] p-6 transition duration-300 ${isActive
+          ? "border-ecell/50 shadow-[0_0_35px_rgba(59,130,246,0.14)]"
+          : isComingSoon
+            ? "border-[#FBBF24]/40 shadow-[0_0_25px_rgba(251,191,36,0.10)]"
+            : "border-white/10 opacity-50 hover:opacity-85"
+        }`}
     >
-      <div className="bg-gradient-to-b from-[rgba(0,0,0,0.14)] to-[rgba(0,0,0.4,1)]">
-        <div className="flex flex-col gap-3 items-center justify-center text-5xl lg:text-7xl xl:text-[80px] font-bold">
-          <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
-            Events
-          </span>
-          <svg
-            width="450"
-            height="1"
-            viewBox="0 0 580 1"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              y1="0.5"
-              x2="580"
-              y2="0.5"
-              stroke="url(#paint0_linear_11_3)"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_11_3"
-                x1="622.006"
-                y1="1"
-                x2="-40.7939"
-                y2="0.999999"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="white" stopOpacity="0" />
-                <stop offset="0.501042" stopColor="white" />
-                <stop offset="1" stopColor="white" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
+      <div className="absolute right-4 top-4">
+        <span
+          className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] ${isActive
+              ? "bg-ecell/10 text-ecell-light"
+              : isComingSoon
+                ? "bg-[#FBBF24]/10 text-[#FBBF24]"
+                : "bg-white/5 text-white/40"
+            }`}
+        >
+          <span
+            className={`h-2 w-2 rounded-full ${isActive ? "bg-ecell" : isComingSoon ? "bg-[#FBBF24] animate-pulse" : "bg-white/30"
+              }`}
+          />
+          {isActive ? "Live" : isComingSoon ? "Coming Soon" : "Past"}
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col items-center justify-center gap-8 pt-8">
+        <div className="relative h-28 w-full">
+          <Image
+            src={event.image}
+            alt={event.title}
+            fill
+            sizes="(min-width: 1024px) 260px, (min-width: 768px) 45vw, 80vw"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
+          />
         </div>
-        <div className="w-full h-full flex overflow-auto justify-center">
-          <div className="w-full max-w-4xl 2xl:max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-evenly items-center pt-20 gap-10">
-            <div className="flex flex-col md:mt-20 lg:mt-0 justify-center h-full gap-6">
-              <Image
-                src={flagship}
-                width={200}
-                height={100}
-                alt="Flagship"
-                className="self-center lg:scale-75"
-              />
-              <div className="flex flex-col justify-center gap-8">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Flagship
-                </span>
-                <Link
-                  href="https://flagship.ecellvnit.org/"
-                  target="_blank"
-                  className="text-center bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center h-full gap-6 md:mt-10 lg:mt-8 xl:mt-0">
-              <Image
-                src={suc}
-                width={330}
-                height={100}
-                alt="Startup Conclave"
-                className="self-center scale-[0.7]"
-              />
-              <div className="flex flex-col justify-center gap-8 md:mt-8 lg:mt-2 xl:mt-0">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Startup Conclave
-                </span>
-                <Link
-                  href="https://startupconclave.ecellvnit.org/"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center max-h-fit gap-6 md:mt-20 lg:mt-0">
-              <Image
-                src={jugaad}
-                width={200}
-                height={100}
-                alt="Jugaad"
-                className="self-center md:scale-[1.4] lg:scale-90"
-              />
-              <div className="flex flex-col justify-center gap-8 md:mt-16 lg:mt-0">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Jugaad
-                </span>
-                <Link
-                  href="https://jugaad.ecellvnit.org/"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-start h-full gap-6">
-              <Image
-                src={adventure}
-                width={340}
-                height={100}
-                alt="Adventure"
-                className="self-center scale-90 lg:scale-[0.6] mt-10"
-              />
-              <div className="flex flex-col justify-start gap-8 -mt-10">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Adventure
-                </span>
-                <Link
-                  href="https://adventure.ecellvnit.org"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center h-full gap-6">
-              <Image
-                src={wallstreet}
-                width={340}
-                height={100}
-                alt="Wallstreet"
-                className="self-center scale-90 lg:scale-75"
-              />
-              <div className="flex flex-col justify-center gap-8">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Wallstreet
-                </span>
-                <Link
-                  href="https://wallstreet.ecellvnit.org"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center h-full gap-6">
-              <Image
-                src={ceo}
-                width={340}
-                height={100}
-                alt="CEO"
-                className="self-center scale-[0.6] lg:scale-50"
-              />
-              <div className="flex flex-col justify-center gap-8">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  CEO
-                </span>
-                <Link
-                  href="https://ceo.ecellvnit.org"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center h-full gap-6">
-              <Image
-                src={render}
-                width={320}
-                height={100}
-                alt="Render.ico"
-                className="self-center lg:scale-90"
-              />
-              <div className="flex flex-col justify-center gap-8 lg:mt-9 xl:mt-0">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Render.ico
-                </span>
-                <Link
-                  href="/render"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center h-full gap-6">
-              <Image
-                src={ipl}
-                width={230}
-                alt="IPL Auction"
-                className="self-center md:scale-[0.85] lg:scale-[0.7]"
-              />
-              <div className="flex flex-col justify-center gap-8">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  IPL Auction
-                </span>
-                <Link
-                  href="https://ipl.ecellvnit.org"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center h-full gap-6">
-              <Image
-                src={swades}
-                width={230}
-                height={100}
-                alt="Swades"
-                className="self-center lg:scale-90"
-              />
-              <div className="flex flex-col justify-center gap-8">
-                <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA] uppercase">
-                  Swades
-                </span>
-                <Link
-                  href="https://swades.ecellvnit.org/"
-                  target="_blank"
-                  className="bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase text-center w-1/2 self-center py-3 text-sm font-bold tracking-widest"
-                >
-                  Know More
-                </Link>
-              </div>
-            </div>
-          </div>
+
+        <div className="flex w-full flex-col items-center gap-6">
+          <h3 className="text-center text-2xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-b from-ecell to-ecell-deep">
+            {event.title}
+          </h3>
+          <EventLink
+            event={event}
+            className={`w-full max-w-[190px] rounded-md border-2 py-3 text-center text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${isComingSoon
+                ? "border-[#FBBF24] bg-transparent text-[#FBBF24] hover:bg-[#FBBF24] hover:text-black"
+                : "border-ecell bg-transparent text-ecell hover:bg-ecell hover:text-white"
+              }`}
+          >
+            {isComingSoon ? "Visit Past Event" : "Know More"}
+          </EventLink>
         </div>
       </div>
     </div>
   );
 };
+
+const Events = () => {
+  const activeEvents = eventsData.filter((event) => event.status === "active");
+  const sortedEvents = [...eventsData].sort((a, b) => {
+    const order: Record<EventStatus, number> = { active: 0, comingSoon: 1, past: 2 };
+    return order[a.status] - order[b.status];
+  });
+
+  return (
+    <section id="events" className="mt-20 bg-black py-16">
+      <SectionBackground variant="particles">
+        <div className="bg-gradient-to-b from-[rgba(0,0,0,0.14)] to-black">
+          <SectionHeader category="What's Happening" title="Events" />
+
+        <div className="mx-auto mt-16 flex w-full max-w-7xl flex-col gap-12 px-6">
+          {activeEvents.length > 0 && (
+            <div className="flex flex-col gap-5">
+              <div className="text-center">
+                <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/45">
+                  What&apos;s On
+                </p>
+              </div>
+              <div className="grid gap-6">
+                {activeEvents.map((event) => (
+                  <ActiveEventCard key={event.id} event={event} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {sortedEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </SectionBackground>
+  </section>
+);
+};
+
 export default Events;

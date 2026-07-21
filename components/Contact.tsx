@@ -101,7 +101,7 @@ const Contact = () => {
     <div id="contact" className="h-full my-10 bg-black">
       <div className="py-20 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.2)] flex flex-col">
         <div className="flex flex-col gap-3 items-center justify-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
-          <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">Connect with us</span>
+          <span className="uppercase text-transparent bg-clip-text bg-gradient-to-b from-ecell to-ecell-deep">Connect with us</span>
           <svg className="px-5" width="450" height="1" viewBox="0 0 580 1" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line y1="0.5" x2="580" y2="0.5" stroke="url(#paint0_linear_11_3)" />
             <defs>
@@ -126,7 +126,7 @@ const Contact = () => {
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="text-sm font-bold bg-transparent border-2 border-[#0298F9] text-[#0298F9] hover:bg-[#0298F9] hover:text-white transition-colors duration-300 uppercase w-1/2 md:w-1/4 lg:w-1/6 xl:w-[13%] self-center py-3 mt-20 tracking-widest disabled:cursor-not-allowed disabled:opacity-60"
+          className="text-sm font-bold bg-transparent border-2 border-ecell text-ecell hover:bg-ecell hover:text-white transition-colors duration-300 uppercase w-1/2 md:w-1/4 lg:w-1/6 xl:w-[13%] self-center py-3 mt-20 tracking-widest disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

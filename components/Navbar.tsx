@@ -10,7 +10,7 @@ const navigation = [
   { name: "Events", href: "/#events" },
   { name: "Team", href: "/team" },
   { name: "Sponsors", href: "/sponsors" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Contact", href: "mailto:corporateaffairs@ecellvnit.co.in" },
 ];
 
 const NAV_SCROLL_THRESHOLD = 150;
@@ -58,7 +58,7 @@ const Navbar = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-xs lg:text-sm uppercase tracking-widest text-white/80 hover:text-[#0298F9] transition-colors duration-300 font-medium"
+              className="text-xs lg:text-sm uppercase tracking-widest text-white/80 hover:text-ecell transition-colors duration-300 font-medium"
             >
               {item.name}
             </a>
@@ -92,7 +92,7 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-sm uppercase tracking-widest text-white/80 hover:text-[#0298F9] transition-colors font-medium"
+                className="text-sm uppercase tracking-widest text-white/80 hover:text-ecell transition-colors font-medium"
               >
                 {item.name}
               </a>

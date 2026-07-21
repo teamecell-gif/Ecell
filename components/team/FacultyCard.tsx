@@ -13,8 +13,8 @@ export const FacultyCard = ({
   priority?: boolean;
 }) => (
   <motion.div variants={cardVariants} className="motion-safe:will-change-transform">
-    <div className="border-2 border-gradient-t-secondary scale-90 motion-safe:transition-all motion-safe:duration-300 hover:shadow-[0_0_30px_rgba(2,152,249,0.25)] hover:scale-[0.93]">
-      <div className="bg-gradient-to-b from-[rgba(2,152,249,0)] to-[rgba(8,107,234,0.5)]">
+    <div className="border-2 border-gradient-t-secondary scale-90 motion-safe:transition-all motion-safe:duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] hover:scale-[0.93]">
+      <div className="bg-gradient-to-b from-[rgba(59,130,246,0)] to-[rgba(37,99,235,0.5)]">
         <div className="relative w-full h-[320px]">
           <Image
             src={member.image}
@@ -29,7 +29,7 @@ export const FacultyCard = ({
       </div>
     </div>
     <div className="flex flex-col justify-center gap-2 mt-4">
-      <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-[#0298F9] to-[#086BEA]">
+      <span className="font-bold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-b from-ecell to-ecell-deep">
         {member.name}
       </span>
       <span className="font-medium text-lg text-center text-white">
