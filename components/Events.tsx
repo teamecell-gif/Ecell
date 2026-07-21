@@ -46,7 +46,7 @@ const ActiveEventCard = ({ event }: { event: EventItem }) => (
             {event.title}
           </h3>
           {event.tagline && (
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/75 md:text-base line-clamp-3 sm:line-clamp-none">
               {event.tagline}
             </p>
           )}
@@ -77,12 +77,14 @@ const ActiveEventCard = ({ event }: { event: EventItem }) => (
           </div>
         )}
 
-        <EventLink
-          event={event}
-          className="w-fit rounded-md bg-ecell px-7 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:bg-ecell-deep"
-        >
-          Register Now
-        </EventLink>
+        <div>
+          <EventLink
+            event={event}
+            className="inline-flex rounded-md bg-ecell px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-ecell-deep"
+          >
+            Register Now
+          </EventLink>
+        </div>
       </div>
     </div>
   </div>
@@ -150,10 +152,12 @@ const EventCard = ({ event }: { event: EventItem }) => {
 
 const Events = () => {
   const activeEvents = eventsData.filter((event) => event.status === "active");
-  const sortedEvents = [...eventsData].sort((a, b) => {
-    const order: Record<EventStatus, number> = { active: 0, comingSoon: 1, past: 2 };
-    return order[a.status] - order[b.status];
-  });
+  const otherEvents = eventsData
+    .filter((event) => event.status !== "active")
+    .sort((a, b) => {
+      const order: Record<EventStatus, number> = { active: 0, comingSoon: 1, past: 2 };
+      return order[a.status] - order[b.status];
+    });
 
   return (
     <section id="events" className="mt-20 bg-black py-16">
@@ -178,7 +182,7 @@ const Events = () => {
           )}
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {sortedEvents.map((event) => (
+            {otherEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>

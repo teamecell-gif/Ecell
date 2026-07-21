@@ -85,7 +85,7 @@ const InitiativeCard = ({
         <h3 className="text-3xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-ecell to-ecell-deep md:text-4xl">
           {initiative.title}
         </h3>
-        <p className="text-sm leading-relaxed text-white/70 md:text-base lg:text-lg lg:leading-8">
+        <p className="text-sm leading-relaxed text-white/70 md:text-base lg:text-lg lg:leading-8 line-clamp-2 sm:line-clamp-none">
           {initiative.description}
         </p>
         <Link

@@ -110,9 +110,9 @@ const Landing = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90 z-[1]" />
 
       {/* ── Left Sidebar: Social Icons ── */}
-      <div className="hidden md:flex absolute left-6 lg:left-10 top-0 bottom-0 z-20 flex-col items-center justify-center">
+      <div className="flex absolute left-3 sm:left-6 lg:left-10 top-0 bottom-0 z-20 flex-col items-center justify-center">
 
-        <div className="flex flex-col items-center gap-6 py-8">
+        <div className="flex flex-col items-center gap-5 sm:gap-6 py-4">
           {socials.map((s, i) => (
             <motion.div
               key={s.label}
@@ -126,7 +126,7 @@ const Landing = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="block text-white/80 hover:text-ecell transition-colors duration-300 [&_svg]:w-7 [&_svg]:h-7"
+                className="block text-white/80 hover:text-ecell active:text-ecell active:scale-125 transition-all duration-300 [&_svg]:w-5 [&_svg]:h-5 sm:[&_svg]:w-6 sm:[&_svg]:h-6 lg:[&_svg]:w-7 lg:[&_svg]:h-7 drop-shadow-md"
               >
                 {s.icon}
               </Link>
@@ -204,22 +204,6 @@ const Landing = () => {
           />
         </div>
       </motion.div>
-
-      {/* ── Mobile Social Links (bottom bar) ── */}
-      <div className="md:hidden absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-6">
-        {socials.map((s) => (
-          <Link
-            key={s.label}
-            href={s.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={s.label}
-            className="text-white/70 hover:text-ecell transition-colors"
-          >
-            {s.icon}
-          </Link>
-        ))}
-      </div>
     </section>
   );
 };

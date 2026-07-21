@@ -114,17 +114,17 @@ const Footer = () => {
   return (
     <footer id="footer" className="bg-[#0A0A0A] text-white">
 
-      {/* ── Main 5-column grid ── */}
-      <div className="px-8 py-14 md:px-12 lg:px-16">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-12">
+      {/* ── Main Footer Sections ── */}
+      <div className="px-6 py-12 md:px-12 lg:px-16">
+        <div className="flex flex-col gap-10 divide-y divide-white/10 lg:divide-y-0 lg:grid lg:grid-cols-5 lg:gap-12">
 
           {/* Column 1: Logo + Social */}
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-6">
+          <div className="flex flex-col gap-5 pb-4 lg:pb-0">
             <Link href="/">
               <Image
                 src={ecellLogoWhite}
-                width={200}
-                height={180}
+                width={180}
+                height={160}
                 alt="E-Cell VNIT Logo"
                 className="object-contain"
               />
@@ -149,7 +149,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Consortium (standalone highlighted) */}
-          <div className="flex flex-col gap-4">
+          <div className="pt-8 lg:pt-0 flex flex-col gap-3">
             <Link
               href="https://consortium.ecellvnit.org/"
               target="_blank"
@@ -159,24 +159,28 @@ const Footer = () => {
               <span className="text-xl font-bold text-ecell transition-colors duration-300 group-hover:text-ecell-light">
                 Consortium&apos;25
               </span>
-              <span className="text-sm text-white/50 leading-relaxed">
+              <span className="text-sm text-white/50 leading-relaxed max-w-xs">
                 Annual Entrepreneurship Summit & Management Fest of VNIT, Nagpur
               </span>
             </Link>
           </div>
 
           {/* Column 3: Initiatives */}
-          <LinkColumn title="Initiatives" links={initiatives} />
+          <div className="pt-8 lg:pt-0">
+            <LinkColumn title="Initiatives" links={initiatives} />
+          </div>
 
           {/* Column 4: More */}
-          <LinkColumn title="More" links={moreLinks} />
+          <div className="pt-8 lg:pt-0">
+            <LinkColumn title="More" links={moreLinks} />
+          </div>
 
           {/* Column 5: Contact */}
-          <div className="flex flex-col gap-4">
+          <div className="pt-8 lg:pt-0 flex flex-col gap-4">
             <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white/50">
               Get in Touch
             </h3>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               {/* Address */}
               <div className="flex items-start gap-2.5">
                 <svg className="h-5 w-5 mt-0.5 shrink-0 text-ecell" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -195,7 +199,7 @@ const Footer = () => {
                 <svg className="h-5 w-5 mt-0.5 shrink-0 text-ecell" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
-                <span>corporateaffairs@ecellvnit.co.in</span>
+                <span className="break-all">corporateaffairs@ecellvnit.co.in</span>
               </a>
             </div>
           </div>
