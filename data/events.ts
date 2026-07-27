@@ -14,15 +14,6 @@ export interface EventItem {
 
 export const eventsData: EventItem[] = [
   {
-    id: "chapters-nagpur",
-    title: "Chapters Nagpur - IIT Bombay",
-    status: "active",
-    image: "/assets/events/chapters.png",
-    href: "https://www.ecell.in/chapters/register",
-    external: true,
-    tagline: "E-Summit Chapters Nagpur is a regional entrepreneurship chapter hosted by E-Cell VNIT Nagpur in association with E-Cell IIT Bombay. Featuring an Investors Conclave, BMC Filling Workshop, networking rounds, and the Pitch in a Minute Case Competition. The top 2 startups from VNIT Nagpur win direct entry into the Zonal round of Eureka!.",
-  },
-  {
     id: "skilhouette",
     title: "Skilhouette",
     status: "comingSoon",

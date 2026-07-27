@@ -36,12 +36,12 @@ const SpeakerCard = ({
   return (
     <article
       aria-hidden={isDuplicate}
-      className="relative h-[360px] w-[270px] shrink-0 overflow-hidden rounded-lg border border-white/10 bg-[#101010] shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:h-[400px] sm:w-[300px]"
+      className="relative h-[360px] w-[270px] shrink-0 overflow-hidden rounded-lg border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:h-[400px] sm:w-[300px]"
     >
       {!mounted ? (
-        <div className="absolute inset-0 bg-[#101010]" />
+        <div className="absolute inset-0 bg-black" />
       ) : imageFailed ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#0B1A33] via-[#101010] to-[#060F1F]">
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#0B1A33] via-black to-[#060F1F]">
           <span className="text-6xl font-bold text-white/25">
             {initialsFor(speaker.name)}
           </span>
@@ -73,7 +73,7 @@ const Speakers = ({ speakers }: SpeakersProps) => {
   const marqueeSpeakers = [...speakers, ...speakers];
 
   return (
-    <section id="speakers" className="bg-[#050505] py-20">
+    <section id="speakers" className="bg-black py-20">
       <SectionHeader category="Keynote Luminaries" title="Past Speakers" />
 
       <div className="mt-16 overflow-hidden">

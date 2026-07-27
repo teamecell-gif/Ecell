@@ -23,7 +23,7 @@ export const ParticlesBg = ({ className = "" }: { className?: string }) => {
   return (
     <div className={`hidden md:block absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       <Particles
-        particleCount={100}
+        particleCount={300}
         particleSpread={10}
         speed={0.4}
         particleColors={["#3B82F6"]}

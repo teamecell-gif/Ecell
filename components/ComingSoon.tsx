@@ -12,7 +12,7 @@ interface ComingSoonProps {
 
 const ComingSoon: React.FC<ComingSoonProps> = ({ title }) => {
   return (
-    <div className="min-h-screen bg-[#0C0C0C] flex flex-col justify-between">
+    <div className="min-h-screen bg-black flex flex-col justify-between">
       <Navbar />
 
       <main className="flex-grow flex flex-col items-center justify-center px-4 pt-32 pb-20 relative overflow-hidden">

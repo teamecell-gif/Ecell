@@ -15,7 +15,7 @@ const fadeUp = {
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#0C0C0C] py-24 md:py-32">
+    <section id="about" className="bg-black py-24 md:py-32">
       <SectionBackground variant="particles">
         <div className="max-w-6xl mx-auto px-6 sm:px-12 text-center flex flex-col items-center">
           <SectionHeader category="Who We Are" title="About Us" className="mb-12" />

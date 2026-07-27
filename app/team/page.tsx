@@ -3,6 +3,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SectionHeader from "@/components/ui/SectionHeader";
+import SectionBackground from "@/components/ui/SectionBackground";
 import { motion } from "framer-motion";
 import { GradientDivider } from "@/components/team/Icons";
 import {
@@ -20,7 +21,8 @@ const Team = () => {
   return (
     <div>
       <Navbar />
-      <main className="bg-[#0C0C0C] pt-32 pb-36">
+      <main className="bg-black pt-32 pb-36">
+        <SectionBackground variant="particles">
         <div className="w-full h-full flex justify-center overflow-hidden">
           <div className="w-full max-w-6xl 2xl:max-w-[95%] p-6">
             {/* ── Page Title ── */}
@@ -74,6 +76,7 @@ const Team = () => {
             </section>
           </div>
         </div>
+        </SectionBackground>
         <div className="pt-10 bg-black">
           <Footer />
         </div>

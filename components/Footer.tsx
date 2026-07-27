@@ -112,7 +112,7 @@ const LinkColumn = ({
 /* ─── Footer Component ────────────────────────────────────────── */
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-[#0A0A0A] text-white">
+    <footer id="footer" className="bg-black text-white">
 
       {/* ── Main Footer Sections ── */}
       <div className="px-6 py-12 md:px-12 lg:px-16">

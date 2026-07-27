@@ -25,7 +25,7 @@ const EventLink = ({
 );
 
 const ActiveEventCard = ({ event }: { event: EventItem }) => (
-  <div className="relative overflow-hidden rounded-lg border border-ecell/40 bg-[#101827] p-6 shadow-[0_0_50px_rgba(59,130,246,0.16)]">
+  <div className="relative overflow-hidden rounded-lg border border-ecell/40 bg-black p-6 shadow-[0_0_50px_rgba(59,130,246,0.16)]">
     <div className="grid gap-8 md:grid-cols-[220px_1fr] md:items-center">
       <div className="relative h-36 w-full">
         <Image
@@ -96,10 +96,10 @@ const EventCard = ({ event }: { event: EventItem }) => {
 
   return (
     <div
-      className={`group relative flex min-h-[360px] flex-col justify-between rounded-lg border bg-[#111111] p-6 transition duration-300 ${isActive
+      className={`group relative flex min-h-[360px] flex-col justify-between rounded-lg border bg-black p-6 transition duration-300 ${isActive
           ? "border-ecell/50 shadow-[0_0_35px_rgba(59,130,246,0.14)]"
           : isComingSoon
-            ? "border-[#FBBF24]/40 shadow-[0_0_25px_rgba(251,191,36,0.10)]"
+            ? "border-ecell-light/60 shadow-[0_0_30px_rgba(96,165,250,0.20)]"
             : "border-white/10 opacity-50 hover:opacity-85"
         }`}
     >
@@ -108,12 +108,12 @@ const EventCard = ({ event }: { event: EventItem }) => {
           className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] ${isActive
               ? "bg-ecell/10 text-ecell-light"
               : isComingSoon
-                ? "bg-[#FBBF24]/10 text-[#FBBF24]"
+                ? "bg-ecell-light/20 text-ecell-light"
                 : "bg-white/5 text-white/40"
             }`}
         >
           <span
-            className={`h-2 w-2 rounded-full ${isActive ? "bg-ecell" : isComingSoon ? "bg-[#FBBF24] animate-pulse" : "bg-white/30"
+            className={`h-2 w-2 rounded-full ${isActive ? "bg-ecell" : isComingSoon ? "bg-ecell-light animate-pulse" : "bg-white/30"
               }`}
           />
           {isActive ? "Live" : isComingSoon ? "Coming Soon" : "Past"}
@@ -138,7 +138,7 @@ const EventCard = ({ event }: { event: EventItem }) => {
           <EventLink
             event={event}
             className={`w-full max-w-[190px] rounded-md border-2 py-3 text-center text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${isComingSoon
-                ? "border-[#FBBF24] bg-transparent text-[#FBBF24] hover:bg-[#FBBF24] hover:text-black"
+                ? "border-ecell-light bg-transparent text-ecell-light hover:bg-ecell-light hover:text-black"
                 : "border-ecell bg-transparent text-ecell hover:bg-ecell hover:text-white"
               }`}
           >

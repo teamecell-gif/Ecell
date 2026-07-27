@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { IBM_Plex_Sans_Condensed } from "next/font/google";
 import { classNames } from "./utils/helper";
 import Count from "./utils/Count";
+import SectionBackground from "./ui/SectionBackground";
 
 const ibmPlex = IBM_Plex_Sans_Condensed({
   weight: ["400", "600", "700"],
@@ -71,20 +72,21 @@ const itemVariants = {
 
 const Stats = () => {
   return (
-    <section className="w-full bg-[#08080A] border-y border-white/10 py-12 md:py-16">
+    <section className="w-full bg-black py-12 md:py-16">
+      <SectionBackground variant="particles">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-x-0 sm:divide-x divide-white/10 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden"
+          className="grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-x-0 sm:divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-xl shadow-[0_0_40px_rgba(59,130,246,0.08)] overflow-hidden"
         >
           {statsData.map((stat) => (
             <motion.div
               key={stat.label}
               variants={itemVariants}
-              className="group flex flex-col items-center justify-center p-8 sm:p-10 text-center transition-colors duration-300 hover:bg-white/[0.04]"
+              className="group flex flex-col items-center justify-center p-8 sm:p-10 text-center transition-all duration-300 hover:bg-white/[0.08]"
             >
               <div className="mb-3">{stat.icon}</div>
               <span
@@ -102,6 +104,7 @@ const Stats = () => {
           ))}
         </motion.div>
       </div>
+      </SectionBackground>
     </section>
   );
 };
