@@ -46,9 +46,7 @@ const Navbar = () => {
             width={100}
             height={100}
             priority
-            className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain transition-[filter] duration-300 ${
-              scrolled ? "brightness-0 invert" : ""
-            }`}
+            className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain brightness-0 invert opacity-80"
           />
         </a>
 

@@ -116,7 +116,7 @@ const Sponsors = () => {
                         width={100}
                         height={100}
                         priority
-                        className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain"
+                        className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain brightness-0 invert"
                     />
                 </a>
                 <div className="hidden md:flex items-center gap-6 lg:gap-10">
