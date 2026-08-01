@@ -6,12 +6,14 @@ import Stats from '@/components/Stats'
 import Initiatives from '@/components/Initiatives'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import SocialFab from '@/components/SocialFab'
 import { speakersData } from '@/data/speakers'
 
 export default function Home() {
   return (
     <div className='w-full bg-black'>
       <Navbar />
+      <SocialFab />
       <div className='w-full flex flex-col bg-black'>
         <Landing />
         

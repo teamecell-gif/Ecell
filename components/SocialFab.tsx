@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 /* ─── Social link data ──────────────────────────────────────────── */
 const socials = [
@@ -65,147 +65,86 @@ const socials = [
   },
 ];
 
-/* ─── Framer Motion variants ────────────────────────────────────── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.3 + i * 0.15, duration: 0.8, ease: "easeOut" },
-  }),
-};
-
-const socialFade = {
-  hidden: { opacity: 0, x: -20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: 1.2 + i * 0.1, duration: 0.5, ease: "easeOut" },
-  }),
-};
-
 /* ─── Component ─────────────────────────────────────────────────── */
-const Landing = () => {
-  const handleClickScroll = () => {
-    const element = document.getElementById("about");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const SocialFab = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section
-      id="home"
-      className="relative w-full h-[100dvh] min-h-[100dvh] overflow-hidden bg-black"
-    >
-      {/* ── Blurred Background Image ── */}
-      <div
-        className="absolute -inset-4 bg-cover bg-center bg-no-repeat bg-fixed blur-[4px] scale-[1.03]"
-        style={{
-          backgroundImage: "url('/assets/andywang.webp')",
-        }}
-      />
+    <div className="sm:hidden">
+      {/* ── Dismiss overlay ── */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
-      {/* ── Dark Overlay ── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90 z-[1]" />
-
-      {/* ── Left Sidebar: Social Icons ── */}
-      <div className="hidden sm:flex absolute left-3 sm:left-6 lg:left-10 top-0 bottom-0 z-20 flex-col items-center justify-center">
-
-        <div className="flex flex-col items-center gap-5 sm:gap-6 py-4">
-          {socials.map((s, i) => (
+      {/* ── Fan-out social icons ── */}
+      <AnimatePresence>
+        {isOpen &&
+          socials.map((s, i) => (
             <motion.div
               key={s.label}
-              custom={i}
-              variants={socialFade}
-              initial="hidden"
-              animate="visible"
+              className="fixed left-4 z-50"
+              style={{ bottom: `${(i + 1) * 56 + 24}px` }}
+              initial={{ opacity: 0, y: 20, scale: 0.3 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 20,
+                  delay: i * 0.05,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: 20,
+                scale: 0.3,
+                transition: { duration: 0.15, delay: (socials.length - 1 - i) * 0.03 },
+              }}
             >
               <Link
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="block text-white/80 hover:text-ecell active:text-ecell active:scale-125 transition-all duration-300 [&_svg]:w-5 [&_svg]:h-5 sm:[&_svg]:w-6 sm:[&_svg]:h-6 lg:[&_svg]:w-7 lg:[&_svg]:h-7 drop-shadow-md"
+                className="flex items-center justify-center w-11 h-11 rounded-full bg-black/70 backdrop-blur-sm border border-white/10 text-white/90 hover:text-ecell active:scale-110 transition-all duration-200 shadow-lg"
               >
                 {s.icon}
               </Link>
             </motion.div>
           ))}
-        </div>
-      </div>
+      </AnimatePresence>
 
-      {/* ── Center Content ── */}
-      <div className="relative z-10 h-full min-h-[100dvh] flex flex-col items-center justify-center px-6 text-center">
-
-        {/* Main Heading */}
-        <motion.h1
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-xl"
-        >
-          The Entrepreneurship Cell
-        </motion.h1>
-
-        {/* Sub-heading */}
-        <motion.div
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-2 text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-[0.25em] text-ecell"
-        >
-          VNIT Nagpur
-        </motion.div>
-
-        {/* Tagline */}
-        <motion.p
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-5 md:mt-7 max-w-4xl text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white leading-relaxed tracking-wide drop-shadow-md"
-        >
-          Guiding Founders from Zero to Zenith through<br className="hidden sm:inline" />{" "}
-          <span className="font-normal text-white">Innovation, Mentorship, and Enterprise.</span>
-        </motion.p>
-
-        {/* Explore Button */}
-        <motion.button
-          custom={4}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          onClick={handleClickScroll}
-          className="mt-10 md:mt-12 text-sm sm:text-base font-bold text-ecell bg-transparent border-2 border-ecell px-8 py-3 uppercase tracking-widest hover:bg-ecell hover:text-white transition-colors duration-300 cursor-pointer rounded-sm"
-        >
-          Explore
-        </motion.button>
-      </div>
-
-      {/* ── Right Side Scroll Indicator ── */}
-      <motion.div
-        className="hidden md:flex absolute right-6 lg:right-10 bottom-10 z-20 flex-col items-center gap-3 cursor-pointer text-white hover:text-ecell transition-colors"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-        onClick={handleClickScroll}
+      {/* ── Trigger button ── */}
+      <motion.button
+        className="fixed bottom-6 left-4 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg active:scale-95 transition-shadow duration-200"
+        onClick={() => setIsOpen((prev) => !prev)}
+        animate={{ rotate: isOpen ? 45 : 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        aria-label="Toggle social links"
       >
-        <span className="text-sm uppercase tracking-[0.2em] font-semibold" style={{ writingMode: "vertical-rl" }}>
-          Scroll
+        <span
+          className="text-lg font-bold select-none"
+          style={{
+            background: "linear-gradient(135deg, #60A5FA, #3B82F6, #2563EB)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          @
         </span>
-        <div className="w-7 h-12 border-2 border-current rounded-full flex justify-center pt-2">
-          <motion.div
-            className="w-1.5 h-2.5 bg-current rounded-full"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          />
-        </div>
-      </motion.div>
-    </section>
+      </motion.button>
+    </div>
   );
 };
 
-export default Landing;
+export default SocialFab;

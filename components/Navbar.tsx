@@ -47,7 +47,7 @@ const Navbar = () => {
             height={100}
             priority
             className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain transition-[filter] duration-300 ${
-              scrolled ? "drop-shadow-none" : "drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+              scrolled ? "brightness-0 invert" : ""
             }`}
           />
         </a>
